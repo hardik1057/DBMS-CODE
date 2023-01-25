@@ -1,0 +1,21 @@
+select distinct city from student
+
+select name,age ,age +3, - will display all ages +3 [this will show a table with age + 3 heading ]
+select name, age ,age+3 "passing age " from studnte [this will show a table with + 3 heading as passing age ]
+sleect Name ||''|| city from student - cancatenation
+
+sleect Name ||''|| city from student as "address"- 
+
+truncate all the records from table but table will still exist.
+
+alter is one of the ddl commands which is used for multiple purposes mentioned as below- 
+1)ADD 2) MODIFY 3) RENAME column name 4) DROP - delete a column  
+ 
+
+
+aggregate - 
+max(<column name >)- max in <column name>
+min(<column name >)- min in <column name>
+avg(<column name >)- avg in <column name>
+
+select * from student where bal_fee=(select min(bal_fee) from student);

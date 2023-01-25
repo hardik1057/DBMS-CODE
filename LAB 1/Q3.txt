@@ -1,0 +1,207 @@
+
+SQL> CREATE TABLE EMPLOYEE (EMP_ID NUMBER(2), EMP_NAME VARCHAR2(10), DEPT VARCHAR2(8), GENDER VARCHAR2(6), AGE NUMBER(2), CITY VARCHAR2(10))
+  2  ;
+
+Table created.
+
+SQL> INSERT INTO EMPLOYEE VALUES (1,'KUNAL', 'CSE', 'MALE', 34, 'BBSR');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE VALUES (2,'ANAND', 'CSE', 'MALE', 32, 'BBSR');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE VALUES (3,'REEMA', 'IT', 'FEMALE', 27, 'BBSR');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE VALUES (4,'SWATI', 'IT', 'FEMALE', 26, 'BANGLORE');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE VALUES (5,'SHIV', 'BANK', 'MALE', 30, 'ROURKELA');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE VALUES (6,'ABHISHEK', 'HR', 'MALE', 29, 'DELHI');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE VALUES (7,'RAHUL', 'CSCE', 'MALE', 25, 'CTC');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE VALUES (8,'PRAGYAN', 'CSSE', 'FEMALE', 30, 'PURI');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE VALUES (9,'KAUSHAL', 'IT', 'MALE', 32, 'KOLKATA');
+
+1 row created.
+SQL> INSERT INTO EMPLOYEE VALUES (10,'SEENU', 'ACCOUNTS', 'FEMALE', 33, 'NOIDA');
+
+1 row created.
+
+
+
+(A)
+SQL> SELECT * FROM EMPLOYEE;
+
+    EMP_ID EMP_NAME   DEPT       GENDER        AGE CITY
+---------- ---------- ---------- ------ ---------- ----------
+         1 KUNAL      CSE        MALE           34 BBSR
+         2 ANAND      CSE        MALE           32 BBSR
+         3 REEMA      IT         FEMALE         27 BBSR
+         4 SWATI      IT         FEMALE         26 BANGLORE
+         5 SHIV       BANK       MALE           30 ROURKELA
+         6 ABHISHEK   HR         MALE           29 DELHI
+         7 RAHUL      CSCE       MALE           25 CTC
+         8 PRAGYAN    CSSE       FEMALE         30 PURI
+         9 KAUSHAL    IT         MALE           32 KOLKATA
+        10 SEENU      ACCOUNTS   FEMALE         33 NOIDA
+
+10 rows selected.
+
+(B)
+
+SQL> SELECT * FROM EMPLOYEE WHERE CITY='BBSR';
+
+    EMP_ID EMP_NAME   DEPT       GENDER        AGE CITY
+---------- ---------- ---------- ------ ---------- ----------
+         1 KUNAL      CSE        MALE           34 BBSR
+         2 ANAND      CSE        MALE           32 BBSR
+         3 REEMA      IT         FEMALE         27 BBSR
+(C)
+
+ SELECT EMP_ID , EMP_NAME, DEPT FROM EMPLOYEE WHERE GENDER='FEMALE' AND AGE<30;
+
+    EMP_ID EMP_NAME   DEPT
+---------- ---------- ----------
+         3 REEMA      IT
+         4 SWATI      IT
+(D)
+
+ SELECT EMP_NAME, DEPT, CITY FROM EMPLOYEE WHERE GENDER='MALE';
+
+EMP_NAME   DEPT       CITY
+---------- ---------- ----------
+KUNAL      CSE        BBSR
+ANAND      CSE        BBSR
+SHIV       BANK       ROURKELA
+ABHISHEK   HR         DELHI
+RAHUL      CSCE       CTC
+KAUSHAL    IT         KOLKATA
+
+(E)
+
+SELECT * FROM EMPLOYEE WHERE EMP_NAME LIKE 'A%';
+
+    EMP_ID EMP_NAME   DEPT       GENDER        AGE CITY
+---------- ---------- ---------- ------ ---------- ----------
+         2 ANAND      CSE        MALE           32 BBSR
+         6 ABHISHEK   HR         MALE           29 DELHI
+(F)
+
+ SELECT * FROM EMPLOYEE WHERE CITY = 'BBSR' OR CITY= 'CTC' ;
+
+    EMP_ID EMP_NAME   DEPT       GENDER        AGE CITY
+---------- ---------- ---------- ------ ---------- ----------
+         1 KUNAL      CSE        MALE           34 BBSR
+         2 ANAND      CSE        MALE           32 BBSR
+         3 REEMA      IT         FEMALE         27 BBSR
+         7 RAHUL      CSCE       MALE           25 CTC
+
+(G)
+
+SQL> ALTER TABLE EMPLOYEE ADD SALARY NUMBER(6);
+
+Table altered.
+
+SQL> UPDATE EMPLOYEE SET SALARY=40000 WHERE EMP_ID=1;
+
+1 row updated.
+
+SQL> UPDATE EMPLOYEE SET SALARY=30000 WHERE EMP_ID=2;
+
+1 row updated.
+
+SQL> UPDATE EMPLOYEE SET SALARY=50000 WHERE EMP_ID=3;
+
+1 row updated.
+
+SQL> UPDATE EMPLOYEE SET SALARY=25000 WHERE EMP_ID=4;
+
+1 row updated.
+
+SQL> UPDATE EMPLOYEE SET SALARY=30000 WHERE EMP_ID=5;
+
+1 row updated.
+
+SQL> UPDATE EMPLOYEE SET SALARY=20000 WHERE EMP_ID=6;
+
+1 row updated.
+
+SQL> UPDATE EMPLOYEE SET SALARY=45000 WHERE EMP_ID=7;
+
+1 row updated.
+
+SQL> UPDATE EMPLOYEE SET SALARY=35000 WHERE EMP_ID=8;
+
+1 row updated.
+
+SQL> UPDATE EMPLOYEE SET SALARY=55000 WHERE EMP_ID=9;
+
+1 row updated.
+
+SQL> UPDATE EMPLOYEE SET SALARY=25000 WHERE EMP_ID=10;
+
+1 row updated.
+ 
+
+(H)
+
+SQL> SELECT * FROM EMPLOYEE ORDER BY SALARY DESC;
+
+    EMP_ID EMP_NAME   DEPT       GENDER        AGE CITY           SALARY
+---------- ---------- ---------- ------ ---------- ---------- ----------
+         9 KAUSHAL    IT         MALE           32 KOLKATA         55000
+         3 REEMA      IT         FEMALE         27 BBSR            50000
+         7 RAHUL      CSCE       MALE           25 CTC             45000
+         1 KUNAL      CSE        MALE           34 BBSR            40000
+         8 PRAGYAN    CSSE       FEMALE         30 PURI            35000
+         2 ANAND      CSE        MALE           32 BBSR            30000
+         5 SHIV       BANK       MALE           30 ROURKELA        30000
+        10 SEENU      ACCOUNTS   FEMALE         33 NOIDA           25000
+         4 SWATI      IT         FEMALE         26 BANGLORE        25000
+         6 ABHISHEK   HR         MALE           29 DELHI           20000
+
+(I)
+
+SELECT EMP_ID, EMP_NAME, DEPT FROM EMPLOYEE WHERE GENDER='FEMALE' AND SALARY>=30000;
+
+    EMP_ID EMP_NAME   DEPT
+---------- ---------- ----------
+         3 REEMA      IT
+         8 PRAGYAN    CSSE
+
+(J)
+
+ DELETE FROM EMPLOYEE WHERE CITY='BBSR';
+
+3 rows deleted.
+
+
+
+FINAL TABLE - 
+ SELECT * FROM EMPLOYEE;
+
+    EMP_ID EMP_NAME   DEPT       GENDER        AGE CITY           SALARY
+---------- ---------- ---------- ------ ---------- ---------- ----------
+         4 SWATI      IT         FEMALE         26 BANGLORE        25000
+         5 SHIV       BANK       MALE           30 ROURKELA        30000
+         6 ABHISHEK   HR         MALE           29 DELHI           20000
+         7 RAHUL      CSCE       MALE           25 CTC             45000
+         8 PRAGYAN    CSSE       FEMALE         30 PURI            35000
+         9 KAUSHAL    IT         MALE           32 KOLKATA         55000
+        10 SEENU      ACCOUNTS   FEMALE         33 NOIDA           25000

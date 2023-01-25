@@ -1,0 +1,184 @@
+SQL> CREATE TABLE PRODUCT (P_ID NUMBER(3), P_NAME VARCHAR2(15), COLOR VARCHAR2(10), MFG_YR NUMBER(4), EXP_YR NUMBER(4), PRICE NUMBER (8,2));
+
+Table created.
+
+SQL> INSERT INTO PRODUCT VALUES(100, 'MOBILE', 'BLACK', 2015, 2020, 8499);
+
+1 row created.
+
+SQL> INSERT INTO PRODUCT VALUES(101, 'EARPHONE', 'WHITE', 2017, 2020, 499.99);
+
+1 row created.
+
+SQL> INSERT INTO PRODUCT VALUES(102, 'SPEAKER', 'RED', 2018, 2022, 899.49);
+
+1 row created.
+
+SQL> INSERT INTO PRODUCT VALUES(103, 'KEYBOARD', 'BLACK', 2013, 2020, 1299.49);
+
+1 row created.
+
+SQL> INSERT INTO PRODUCT VALUES(104, 'MONITOR', 'BLUE', 2017, 2030, 9100.49);
+
+1 row created.
+
+SQL> INSERT INTO PRODUCT VALUES(105, 'HDD', 'BLACK', 2014, 2030, 3500.49);
+
+1 row created.
+
+SQL> INSERT INTO PRODUCT VALUES(106, 'MOUSE', 'WHITE', 2016, 2022, 500.49);
+
+1 row created.
+
+SQL> INSERT INTO PRODUCT VALUES(107, 'PEN DRIVE', 'GREEN', 2013, 2022, 300.49);
+
+1 row created.
+
+(A)
+
+SELECT * FROM PRODUCT;
+
+      P_ID P_NAME          COLOR          MFG_YR     EXP_YR      PRICE
+---------- --------------- ---------- ---------- ---------- ----------
+       100 MOBILE          BLACK            2015       2020       8499
+       101 EARPHONE        WHITE            2017       2020     499.99
+       102 SPEAKER         RED              2018       2022     899.49
+       103 KEYBOARD        BLACK            2013       2020    1299.49
+       104 MONITOR         BLUE             2017       2030    9100.49
+       105 HDD             BLACK            2014       2030    3500.49
+       106 MOUSE           WHITE            2016       2022     500.49
+       107 PEN DRIVE       GREEN            2013       2022     300.49
+
+8 rows selected.
+
+(B)
+
+ SELECT P_ID, COLOR FROM PRODUCT;
+
+      P_ID COLOR
+---------- ----------
+       100 BLACK
+       101 WHITE
+       102 RED
+       103 BLACK
+       104 BLUE
+       105 BLACK
+       106 WHITE
+       107 GREEN
+
+8 rows selected.
+
+(C)
+SQL> SELECT * FROM PRODUCT WHERE COLOR='RED';
+
+      P_ID P_NAME          COLOR          MFG_YR     EXP_YR      PRICE
+---------- --------------- ---------- ---------- ---------- ----------
+       102 SPEAKER         RED              2018       2022     899.49
+
+(D)
+
+
+SQL> SELECT P_NAME, PRICE FROM PRODUCT WHERE MFG_YR=2017;
+
+P_NAME               PRICE
+--------------- ----------
+EARPHONE            499.99
+MONITOR            9100.49
+
+(E)
+
+ ALTER TABLE PRODUCT ADD LOP NUMBER(3);
+
+Table altered.
+
+SQL> UPDATE PRODUCT SET LOP=5 WHERE P_ID=100;
+
+1 row updated.
+
+SQL> UPDATE PRODUCT SET LOP=3 WHERE P_ID=101;
+
+1 row updated.
+
+SQL> UPDATE PRODUCT SET LOP=4 WHERE P_ID=102;
+
+1 row updated.
+
+SQL> UPDATE PRODUCT SET LOP=7 WHERE P_ID=103;
+
+1 row updated.
+
+SQL> UPDATE PRODUCT SET LOP=13 WHERE P_ID=104;
+
+1 row updated.
+
+SQL> UPDATE PRODUCT SET LOP=16 WHERE P_ID=105;
+
+1 row updated.
+
+SQL> UPDATE PRODUCT SET LOP=6 WHERE P_ID=106;
+
+1 row updated.
+
+SQL> UPDATE PRODUCT SET LOP=9 WHERE P_ID=107;
+
+1 row updated.
+
+(F)
+
+SQL> SELECT * FROM PRODUCT WHERE LOP<10;
+
+      P_ID P_NAME          COLOR          MFG_YR     EXP_YR      PRICE        LOP
+---------- --------------- ---------- ---------- ---------- ---------- ----------
+       100 MOBILE          BLACK            2015       2020       8499          5
+       101 EARPHONE        WHITE            2017       2020     499.99          3
+       102 SPEAKER         RED              2018       2022     899.49          4
+       103 KEYBOARD        BLACK            2013       2020    1299.49          7
+       106 MOUSE           WHITE            2016       2022     500.49          6
+       107 PEN DRIVE       GREEN            2013       2022     300.49          9
+
+6 rows selected.
+
+(G)
+
+SQL> SELECT P_ID, P_NAME, COLOR FROM PRODUCT WHERE LOP=4;
+
+      P_ID P_NAME          COLOR
+---------- --------------- ----------
+       102 SPEAKER         RED
+
+(H)
+
+SQL> DELETE FROM PRODUCT WHERE MFG_YR=2015;
+
+1 row deleted.
+
+(I)
+
+
+SQL> ALTER TABLE PRODUCT DROP COLUMN COLOR;
+
+Table altered.
+
+(J)
+
+SQL> TRUNCATE TABLE PRODUCT;
+
+Table truncated.
+
+SQL> SELECT * FROM PRODUCT;
+
+no rows selected
+
+(K)
+
+SQL> DROP TABLE PRODUCT;
+
+Table dropped.
+
+SQL> SELECT * FROM PRODUCT;
+SELECT * FROM PRODUCT
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
