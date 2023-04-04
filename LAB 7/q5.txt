@@ -1,0 +1,205 @@
+SQL> CREATE TABLE SAILOR_7 (SID VARCHAR2(10),SNAME VARCHAR2(50),RATING NUMBER(2),AGE NUMBER(3));
+
+Table created.
+
+SQL> INSERT INTO SAILOR_7 VALUES ('S1', 'John', 6, 24);
+
+1 row created.
+
+SQL> INSERT INTO SAILOR_7 VALUES ('S2', 'Mary', 8, 27);
+
+1 row created.
+
+SQL> INSERT INTO SAILOR_7 VALUES ('S3', 'David', 4, 20);
+
+1 row created.
+
+SQL> INSERT INTO SAILOR_7 VALUES ('S4', 'Kate', 7, 22);
+
+1 row created.
+
+SQL> INSERT INTO SAILOR_7 VALUES ('S5', 'Mike', 5, 26);
+
+1 row created.
+
+SQL> SELECT * FROM SAILOR_7;
+
+SID        SNAME          RATING        AGE
+---------- ---------- ---------- ----------
+S1         John                6         24
+S2         Mary                8         27
+S3         David               4         20
+S4         Kate                7         22
+S5         Mike                5         26
+
+SQL> CREATE TABLE BOAT_7 (  BID VARCHAR2(10),  BNAME VARCHAR2(10),  COLOR VARCHAR2(7));
+
+Table created.
+
+SQL> INSERT INTO BOAT_7 VALUES ('B1', 'Sailboat', 'Red');
+
+1 row created.
+
+SQL> INSERT INTO BOAT_7 VALUES ('B2', 'Rowboat', 'Green');
+
+1 row created.
+
+SQL> INSERT INTO BOAT_7 VALUES ('B3', 'Canoe', 'Blue');
+
+1 row created.
+
+SQL> INSERT INTO BOAT_7 VALUES ('B4', 'Kayak', 'Yellow');
+
+1 row created.
+
+SQL> INSERT INTO BOAT_7 VALUES ('B5', 'Catamaran', 'White');
+
+1 row created.
+
+SQL> SELECT * FROM BOAT_7;
+
+BID        BNAME      COLOR
+---------- ---------- -------
+B1         Sailboat   Red
+B2         Rowboat    Green
+B3         Canoe      Blue
+B4         Kayak      Yellow
+B5         Catamaran  White
+
+SQL> CREATE TABLE RESERVES_7 (  SID VARCHAR2(10),  BID VARCHAR2(10),  "DATE" VARCHAR2(10));
+
+Table created.
+
+SQL> INSERT INTO RESERVES_7 VALUES ('S1','B2','2022-04-01');
+
+1 row created.
+
+SQL> INSERT INTO RESERVES_7 VALUES ('S1','B4','2022-04-03');
+
+1 row created.
+
+SQL> INSERT INTO RESERVES_7 VALUES ('S2','B1','2022-03-30');
+
+1 row created.
+
+SQL> INSERT INTO RESERVES_7 VALUES ('S2','B2','2022-04-05');
+
+1 row created.
+
+SQL> INSERT INTO RESERVES_7 VALUES ('S3','B3','2022-04-02');
+
+1 row created.
+
+SQL> INSERT INTO RESERVES_7 VALUES ('S3','B5','2022-04-04');
+
+1 row created.
+
+SQL> INSERT INTO RESERVES_7 VALUES ('S4','B2','2022-03-29');
+
+1 row created.
+
+SQL> INSERT INTO RESERVES_7 VALUES ('S4','B3','2022-04-03');
+
+1 row created.
+
+SQL> INSERT INTO RESERVES_7 VALUES ('S5','B1','2022-04-01');
+
+1 row created.
+
+SQL> INSERT INTO RESERVES_7 VALUES ('S5','B4','2022-04-06');
+
+1 row created.
+
+SQL> INSERT INTO RESERVES_7 VALUES ('S1','B3','2022-04-02');
+
+1 row created.
+
+SQL> INSERT INTO RESERVES_7 VALUES ('S1','B5','2022-04-03');
+
+1 row created.
+
+SQL> SELECT * FROM RESERVES_7;
+
+SID        BID        DATE
+---------- ---------- ----------
+S1         B2         2022-04-01
+S1         B4         2022-04-03
+S2         B1         2022-03-30
+S2         B2         2022-04-05
+S3         B3         2022-04-02
+S3         B5         2022-04-04
+S4         B2         2022-03-29
+S4         B3         2022-04-03
+S5         B1         2022-04-01
+S5         B4         2022-04-06
+S1         B1         2022-04-01
+
+SID        BID        DATE
+---------- ---------- ----------
+S1         B3         2022-04-02
+S1         B5         2022-04-03
+
+13 rows selected.
+
+SQL> SELECT SID, SNAME, AGE FROM SAILOR_7 WHERE RATING > 5;
+
+SID        SNAME             AGE
+---------- ---------- ----------
+S1         John               24
+S2         Mary               27
+S4         Kate               22
+
+SQL> SELECT S.SID, S.SNAME FROM SAILOR_7 S JOIN RESERVES_7 R ON S.SID = R.SID WHERE R.BID = 'B1';
+
+SID        SNAME
+---------- ----------
+S1         John
+S2         Mary
+S5         Mike
+
+SQL> SELECT DISTINCT S.SID, S.SNAME FROM SAILOR_7 S JOIN RESERVES_7 R ON S.SID = R.SID JOIN BOAT_7 B ON R.BID = B.BID WHERE B.COLOR = 'Green';
+
+SID        SNAME
+---------- ----------
+S4         Kate
+S1         John
+S2         Mary
+
+SQL> SELECT R.SID FROM RESERVES_7 R GROUP BY R.SID HAVING COUNT(DISTINCT R.BID) = (SELECT COUNT(*) FROM BOAT_7);
+
+SID
+----------
+S1
+
+SQL> SELECT R.SID, S.SNAME FROM SAILOR_7 S JOIN RESERVES_7 R ON S.SID = R.SID JOIN BOAT_7 B ON R.BID = B.BID WHERE B.COLOR = 'Red' GROUP BY R.SID, S.SNAME HAVING COUNT(DISTINCT R.BID) = (SELECT COUNT(*) FROM BOAT_7 WHERE COLOR = 'Red');
+
+SID        SNAME
+---------- ----------
+S1         John
+S5         Mike
+S2         Mary
+
+SQL> SELECT S.SNAME FROM SAILOR_7 S INNER JOIN RESERVES_7 R ON S.SID = R.SID GROUP BY S.SID, S.SNAME HAVING COUNT(DISTINCT R.BID) >= 2;
+
+SNAME
+----------
+Kate
+David
+John
+Mike
+Mary
+
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SPOOL OFF;
+
+// FOR CHECKING KI SAHI CHAL RHA KI NAI ->
+
+SQL> SELECT S.SNAME FROM SAILOR_7 S INNER JOIN RESERVES_7 R ON S.SID = R.SID GROUP BY S.SID, S.SNAME HAVING COUNT(DISTINCT R.BID) >= 3;
+
+SNAME
+----------
+John

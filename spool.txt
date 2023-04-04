@@ -1,0 +1,1 @@
+spool "C:\Users\h2105\OneDrive\Desktop\DBMS CODE\LAB "

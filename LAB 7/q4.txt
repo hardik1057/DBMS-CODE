@@ -1,0 +1,206 @@
+SQL> CREATE TABLE SUPPLIER(SID Number(3),SNAME varchar2(3),LOCATION varchar2(3));
+
+Table created.
+
+SQL> INSERT INTO SUPPLIER VALUES(100,'SS','AB');
+
+1 row created.
+
+SQL> INSERT INTO SUPPLIER VALUES(101,'SB','AC');
+
+1 row created.
+
+SQL> INSERT INTO SUPPLIER VALUES(102,'SC','AD');
+
+1 row created.
+
+SQL> INSERT INTO SUPPLIER VALUES(103,'SD','AE');
+
+1 row created.
+
+SQL> INSERT INTO SUPPLIER VALUES(104,'SE','AF');
+
+1 row created.
+
+SQL> CREATE TABLE PART(pid Number(3),pname varchar2(3),color varchar2(10));
+
+Table created.
+
+SQL> INSERT INTO PART VALUES(200,'PA','RED');
+
+1 row created.
+
+SQL> INSERT INTO PART VALUES(201,'PB','BLUE');
+
+1 row created.
+
+SQL> INSERT INTO PART VALUES(202,'PC','GREEN');
+
+1 row created.
+
+SQL> INSERT INTO PART VALUES(203,'PD','YELLOW');
+
+1 row created.
+
+SQL> INSERT INTO PART VALUES(204,'PD','ORANGE');
+
+1 row created.
+
+SQL> CREATE TABLE CATA(SID Number(3),PID Number(3),Cost Number(3));
+
+Table created.
+
+SQL> INSERT INTO CATA VALUES(100,200,10);
+
+1 row created.
+
+SQL> INSERT INTO CATA VALUES(101,201,20);
+
+1 row created.
+
+SQL> INSERT INTO CATA VALUES(102,202,30);
+
+1 row created.
+
+SQL> INSERT INTO CATA VALUES(103,203,40);
+
+1 row created.
+
+SQL> INSERT INTO CATA VALUES(104,204,50);
+
+1 row created.
+
+SQL> INSERT INTO CATA VALUES(105,205,60);
+
+1 row created.
+
+SQL> INSERT INTO CATA VALUES(106,206,70);
+
+1 row created.
+
+SQL> INSERT INTO CATA VALUES(107,207,80);
+
+1 row created.
+
+SQL> INSERT INTO CATA VALUES(108,208,90);
+
+1 row created.
+
+SQL> INSERT INTO CATA VALUES(109,209,100);
+
+1 row created.
+
+SQL> INSERT INTO CATA VALUES(110,210,110);
+
+1 row created.
+
+SQL> INSERT INTO CATA VALUES(111,211,120);
+
+1 row created.
+
+SQL> INSERT INTO CATA VALUES(112,213,130);
+
+1 row created.
+
+SQL> INSERT INTO CATA VALUES(113,213,140);
+
+1 row created.
+
+SQL> INSERT INTO CATA VALUES(114,214,150);
+
+1 row created.
+
+SQL> SELECT * FROM SUPPLIER;
+
+       SID SNA LOC                                                                                                                                                                                      
+---------- --- ---                                                                                                                                                                                      
+       100 SS  AB                                                                                                                                                                                       
+       101 SB  AC                                                                                                                                                                                       
+       102 SC  AD                                                                                                                                                                                       
+       103 SD  AE                                                                                                                                                                                       
+       104 SE  AF                                                                                                                                                                                       
+
+SQL> SELECT * FROM PART;
+
+       PID PNA COLOR                                                                                                                                                                                    
+---------- --- ----------                                                                                                                                                                               
+       200 PA  RED                                                                                                                                                                                      
+       201 PB  BLUE                                                                                                                                                                                     
+       202 PC  GREEN                                                                                                                                                                                    
+       203 PD  YELLOW                                                                                                                                                                                   
+       204 PD  ORANGE                                                                                                                                                                                   
+
+SQL> SELECT * FROM CATA;
+
+       SID        PID       COST                                                                                                                                                                        
+---------- ---------- ----------                                                                                                                                                                        
+       100        200         10                                                                                                                                                                        
+       101        201         20                                                                                                                                                                        
+       102        202         30                                                                                                                                                                        
+       103        203         40                                                                                                                                                                        
+       104        204         50                                                                                                                                                                        
+       105        205         60                                                                                                                                                                        
+       106        206         70                                                                                                                                                                        
+       107        207         80                                                                                                                                                                        
+       108        208         90                                                                                                                                                                        
+       109        209        100                                                                                                                                                                        
+       110        210        110                                                                                                                                                                        
+       111        211        120                                                                                                                                                                        
+       112        213        130                                                                                                                                                                        
+       113        213        140                                                                                                                                                                        
+       114        214        150                                                                                                                                                                        
+
+15 rows selected.
+
+SQL> SELECT s.SID FROM SUPPLIER s,PART p WHERE p.COLOR='RED';
+
+       SID                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+       100                                                                                                                                                                                              
+       101                                                                                                                                                                                              
+       102                                                                                                                                                                                              
+       103                                                                                                                                                                                              
+       104                                                                                                                                                                                              
+
+SQL> SELECT S.SID, S.LOCATION FROM SUPPLIER S JOIN CATA C ON S.SID = C.SID JOIN PART P ON C.PID = P.PID WHERE P.COLOR = 'GREEN' GROUP BY S.SID, S.LOCATION HAVING COUNT(DISTINCT P.PID) = (SELECT COUNT(DISTINCT P2.PID) FROM PART P2 WHERE P2.COLOR = 'GREEN');
+
+       SID LOC
+---------- ---
+       102 AD
+
+SQL> SELECT DISTINCT C.SID FROM CATA C JOIN PART P ON C.PID = P.PID WHERE P.COLOR IN ('RED', 'BLUE');
+
+       SID
+----------
+       100
+       101
+
+SQL> SELECT DISTINCT s.* FROM SUPPLIER s JOIN CATA c ON s.SID = c.SID JOIN PART p ON c.PID = p.PID WHERE p.COLOR = 'YELLOW' AND p.COLOR = 'GREEN';
+
+no rows selected
+
+SQL> SELECT S.SID FROM SUPPLIER S JOIN CATA C ON S.SID = C.SID JOIN PART P ON C.PID = P.PID WHERE P.COLOR = 'GREEN' OR S.LOCATION = 'BBSR';
+
+       SID
+----------
+       102
+
+SQL> SELECT s.* FROM SUPPLIER s JOIN CATA c ON s.SID = c.SID JOIN PART p ON c.PID = p.PID WHERE p.COLOR = 'RED';
+
+       SID SNA LOC
+---------- --- ---
+       100 SS  AB
+
+SQL> SELECT S.* FROM SUPPLIER S WHERE S.SID NOT IN (SELECT C.SID FROM CATA C JOIN PART P ON C.PID = P.PID WHERE P.COLOR='GREEN');
+
+       SID SNA LOC
+---------- --- ---
+       103 SD  AE
+       100 SS  AB
+       101 SB  AC
+       104 SE  AF
+
+SQL> SPOOL OFF;
+
+
+

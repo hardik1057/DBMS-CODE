@@ -1,0 +1,446 @@
+SQL> CREATE TABLE CUSTOMER(CUST_ID INT PRIMARY KEY NOT NULL, CUST_NAME VARCHAR(25) NOT NULL UNIQUE,GENDER CHAR(1) NOT NULL CHECK (Gender IN ('M', 'F', 'T')),  Age INT NOT NULL CHECK (Age >= 18 AND Age < 80), CITY VARCHAR(50));
+
+Table created.
+
+SQL> DESC CUSTOMER;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUST_ID                                   NOT NULL NUMBER(38)
+ CUST_NAME                                 NOT NULL VARCHAR2(25)
+ GENDER                                    NOT NULL CHAR(1)
+ AGE                                       NOT NULL NUMBER(38)
+ CITY                                               VARCHAR2(50)
+
+SQL> INSERT INTO CUSTOMER VALUES (1, 'JOHN DOE', 'M', 35, 'BBSR');
+
+1 row created.
+
+SQL> INSERT INTO CUSTOMER VALUES (2, 'JANE DOE', 'F', 30, 'MUMBAI');
+
+1 row created.
+
+SQL> INSERT INTO CUSTOMER VALUES (3, 'ALEX SMITH', 'T', 25, 'CTC');
+
+1 row created.
+
+SQL>  INSERT INTO CUSTOMER VALUES (4, 'EMMA WATSON', 'M', 27, 'DELHI');
+
+1 row created.
+
+SQL> INSERT INTO CUSTOMER VALUES (5, 'HARRY POTTER', 'F', 32, 'BBSR');
+
+1 row created.
+
+SQL> INSERT INTO CUSTOMER VALUES (6, 'AVA LEE', 'M', 40, 'CTC');
+
+1 row created.
+
+SQL> INSERT INTO CUSTOMER VALUES (7, 'LIAM JOHNSON', 'T', 28, 'MUMBAI');
+
+1 row created.
+
+SQL> INSERT INTO CUSTOMER VALUES (8, 'SOPHIA JOHNSON', 'F', 32, 'BBSR');
+
+1 row created.
+
+SQL> INSERT INTO CUSTOMER VALUES (9, 'NOAH BROWN', 'M', 45, 'DELHI');
+
+1 row created.
+
+SQL> INSERT INTO CUSTOMER VALUES (10, 'ARIA BROWN', 'T', 35, 'CTC');
+
+1 row created.
+
+SQL> SELECT * FROM CUSTOMER;
+
+   CUST_ID CUST_NAME                 G        AGE                               
+---------- ------------------------- - ----------                               
+CITY                                                                            
+--------------------------------------------------                              
+         1 JOHN DOE                  M         35                               
+BBSR                                                                            
+                                                                                
+         2 JANE DOE                  F         30                               
+MUMBAI                                                                          
+                                                                                
+         3 ALEX SMITH                T         25                               
+CTC                                                                             
+                                                                                
+
+   CUST_ID CUST_NAME                 G        AGE                               
+---------- ------------------------- - ----------                               
+CITY                                                                            
+--------------------------------------------------                              
+         4 EMMA WATSON               M         27                               
+DELHI                                                                           
+                                                                                
+         5 HARRY POTTER              F         32                               
+BBSR                                                                            
+                                                                                
+         6 AVA LEE                   M         40                               
+CTC                                                                             
+                                                                                
+
+   CUST_ID CUST_NAME                 G        AGE                               
+---------- ------------------------- - ----------                               
+CITY                                                                            
+--------------------------------------------------                              
+         7 LIAM JOHNSON              T         28                               
+MUMBAI                                                                          
+                                                                                
+         8 SOPHIA JOHNSON            F         32                               
+BBSR                                                                            
+                                                                                
+         9 NOAH BROWN                M         45                               
+DELHI                                                                           
+                                                                                
+
+   CUST_ID CUST_NAME                 G        AGE                               
+---------- ------------------------- - ----------                               
+CITY                                                                            
+--------------------------------------------------                              
+        10 ARIA BROWN                T         35                               
+CTC                                                                             
+                                                                                
+
+10 rows selected.
+
+SQL> SELECT * FROM CUSTOMER;
+
+   CUST_ID CUST_NAME                 G        AGE                               
+---------- ------------------------- - ----------                               
+CITY                                                                            
+--------------------------------------------------                              
+         1 JOHN DOE                  M         35                               
+BBSR                                                                            
+                                                                                
+         2 JANE DOE                  F         30                               
+MUMBAI                                                                          
+                                                                                
+         3 ALEX SMITH                T         25                               
+CTC                                                                             
+                                                                                
+
+   CUST_ID CUST_NAME                 G        AGE                               
+---------- ------------------------- - ----------                               
+CITY                                                                            
+--------------------------------------------------                              
+         4 EMMA WATSON               M         27                               
+DELHI                                                                           
+                                                                                
+         5 HARRY POTTER              F         32                               
+BBSR                                                                            
+                                                                                
+         6 AVA LEE                   M         40                               
+CTC                                                                             
+                                                                                
+
+   CUST_ID CUST_NAME                 G        AGE                               
+---------- ------------------------- - ----------                               
+CITY                                                                            
+--------------------------------------------------                              
+         7 LIAM JOHNSON              T         28                               
+MUMBAI                                                                          
+                                                                                
+         8 SOPHIA JOHNSON            F         32                               
+BBSR                                                                            
+                                                                                
+         9 NOAH BROWN                M         45                               
+DELHI                                                                           
+                                                                                
+
+   CUST_ID CUST_NAME                 G        AGE                               
+---------- ------------------------- - ----------                               
+CITY                                                                            
+--------------------------------------------------                              
+        10 ARIA BROWN                T         35                               
+CTC                                                                             
+                                                                                
+
+10 rows selected.
+
+SQL> SET LINESIZE 100;
+SQL> SELECT * FROM CUSTOMER;
+
+   CUST_ID CUST_NAME                 G        AGE CITY                                              
+---------- ------------------------- - ---------- --------------------------------------------------
+         1 JOHN DOE                  M         35 BBSR                                              
+         2 JANE DOE                  F         30 MUMBAI                                            
+         3 ALEX SMITH                T         25 CTC                                               
+         4 EMMA WATSON               M         27 DELHI                                             
+         5 HARRY POTTER              F         32 BBSR                                              
+         6 AVA LEE                   M         40 CTC                                               
+         7 LIAM JOHNSON              T         28 MUMBAI                                            
+         8 SOPHIA JOHNSON            F         32 BBSR                                              
+         9 NOAH BROWN                M         45 DELHI                                             
+        10 ARIA BROWN                T         35 CTC                                               
+
+10 rows selected.
+
+SQL> SELECT * FROM CUSTOMER WHERE CITY IN ('BBSR', 'CTC');
+
+   CUST_ID CUST_NAME                 G        AGE CITY                                              
+---------- ------------------------- - ---------- --------------------------------------------------
+         1 JOHN DOE                  M         35 BBSR                                              
+         3 ALEX SMITH                T         25 CTC                                               
+         5 HARRY POTTER              F         32 BBSR                                              
+         6 AVA LEE                   M         40 CTC                                               
+         8 SOPHIA JOHNSON            F         32 BBSR                                              
+        10 ARIA BROWN                T         35 CTC                                               
+
+6 rows selected.
+
+SQL> SELECT CUST_ID, CUST_NAME, AGE FROM CUSTOMER;
+
+   CUST_ID CUST_NAME                        AGE                                                     
+---------- ------------------------- ----------                                                     
+         1 JOHN DOE                          35                                                     
+         2 JANE DOE                          30                                                     
+         3 ALEX SMITH                        25                                                     
+         4 EMMA WATSON                       27                                                     
+         5 HARRY POTTER                      32                                                     
+         6 AVA LEE                           40                                                     
+         7 LIAM JOHNSON                      28                                                     
+         8 SOPHIA JOHNSON                    32                                                     
+         9 NOAH BROWN                        45                                                     
+        10 ARIA BROWN                        35                                                     
+
+10 rows selected.
+
+SQL> ALTER TABLE CUSTOMER ADD PURCHASE_AMOUNT NUMBER(10,2);
+
+Table altered.
+
+SQL> UPDATE CUSTOMER SET PURCHASE_AMOUNT=6000.99 WHERE CUST_ID=1;
+
+1 row updated.
+
+SQL> UPDATE CUSTOMER SET PURCHASE_AMOUNT=7000.99 WHERE CUST_ID=2;
+
+1 row updated.
+
+SQL> UPDATE CUSTOMER SET PURCHASE_AMOUNT=8120.99 WHERE CUST_ID=2;
+
+1 row updated.
+
+SQL> UPDATE CUSTOMER SET PURCHASE_AMOUNT=7000.99 WHERE CUST_ID=3;
+
+1 row updated.
+
+SQL> UPDATE CUSTOMER SET PURCHASE_AMOUNT=6510.49 WHERE CUST_ID=4;
+
+1 row updated.
+
+SQL> UPDATE CUSTOMER SET PURCHASE_AMOUNT=1210.79 WHERE CUST_ID=5;
+
+1 row updated.
+
+SQL> UPDATE CUSTOMER SET PURCHASE_AMOUNT=4310.99 WHERE CUST_ID=6;
+
+1 row updated.
+
+SQL> UPDATE CUSTOMER SET PURCHASE_AMOUNT=2142.99 WHERE CUST_ID=7;
+
+1 row updated.
+
+SQL> UPDATE CUSTOMER SET PURCHASE_AMOUNT=2650.99 WHERE CUST_ID=8;
+
+1 row updated.
+
+SQL> UPDATE CUSTOMER SET PURCHASE_AMOUNT=2650.99 WHERE CUST_ID=9;
+
+1 row updated.
+
+SQL> UPDATE CUSTOMER SET PURCHASE_AMOUNT=3450.99 WHERE CUST_ID=9;
+
+1 row updated.
+
+SQL> UPDATE CUSTOMER SET PURCHASE_AMOUNT=3650.19 WHERE CUST_ID=10;
+
+1 row updated.
+
+SQL> SELECT * FROM CUSTOMER;
+
+   CUST_ID CUST_NAME                 G        AGE CITY                                              
+---------- ------------------------- - ---------- --------------------------------------------------
+PURCHASE_AMOUNT                                                                                     
+---------------                                                                                     
+         1 JOHN DOE                  M         35 BBSR                                              
+        6000.99                                                                                     
+                                                                                                    
+         2 JANE DOE                  F         30 MUMBAI                                            
+        8120.99                                                                                     
+                                                                                                    
+         3 ALEX SMITH                T         25 CTC                                               
+        7000.99                                                                                     
+                                                                                                    
+
+   CUST_ID CUST_NAME                 G        AGE CITY                                              
+---------- ------------------------- - ---------- --------------------------------------------------
+PURCHASE_AMOUNT                                                                                     
+---------------                                                                                     
+         4 EMMA WATSON               M         27 DELHI                                             
+        6510.49                                                                                     
+                                                                                                    
+         5 HARRY POTTER              F         32 BBSR                                              
+        1210.79                                                                                     
+                                                                                                    
+         6 AVA LEE                   M         40 CTC                                               
+        4310.99                                                                                     
+                                                                                                    
+
+   CUST_ID CUST_NAME                 G        AGE CITY                                              
+---------- ------------------------- - ---------- --------------------------------------------------
+PURCHASE_AMOUNT                                                                                     
+---------------                                                                                     
+         7 LIAM JOHNSON              T         28 MUMBAI                                            
+        2142.99                                                                                     
+                                                                                                    
+         8 SOPHIA JOHNSON            F         32 BBSR                                              
+        2650.99                                                                                     
+                                                                                                    
+         9 NOAH BROWN                M         45 DELHI                                             
+        3450.99                                                                                     
+                                                                                                    
+
+   CUST_ID CUST_NAME                 G        AGE CITY                                              
+---------- ------------------------- - ---------- --------------------------------------------------
+PURCHASE_AMOUNT                                                                                     
+---------------                                                                                     
+        10 ARIA BROWN                T         35 CTC                                               
+        3650.19                                                                                     
+                                                                                                    
+
+10 rows selected.
+
+SQL> SET LINESIZE 100;
+SQL> SELECT * FROM CUSTOMER;
+
+   CUST_ID CUST_NAME                 G        AGE CITY                                              
+---------- ------------------------- - ---------- --------------------------------------------------
+PURCHASE_AMOUNT                                                                                     
+---------------                                                                                     
+         1 JOHN DOE                  M         35 BBSR                                              
+        6000.99                                                                                     
+                                                                                                    
+         2 JANE DOE                  F         30 MUMBAI                                            
+        8120.99                                                                                     
+                                                                                                    
+         3 ALEX SMITH                T         25 CTC                                               
+        7000.99                                                                                     
+                                                                                                    
+
+   CUST_ID CUST_NAME                 G        AGE CITY                                              
+---------- ------------------------- - ---------- --------------------------------------------------
+PURCHASE_AMOUNT                                                                                     
+---------------                                                                                     
+         4 EMMA WATSON               M         27 DELHI                                             
+        6510.49                                                                                     
+                                                                                                    
+         5 HARRY POTTER              F         32 BBSR                                              
+        1210.79                                                                                     
+                                                                                                    
+         6 AVA LEE                   M         40 CTC                                               
+        4310.99                                                                                     
+                                                                                                    
+
+   CUST_ID CUST_NAME                 G        AGE CITY                                              
+---------- ------------------------- - ---------- --------------------------------------------------
+PURCHASE_AMOUNT                                                                                     
+---------------                                                                                     
+         7 LIAM JOHNSON              T         28 MUMBAI                                            
+        2142.99                                                                                     
+                                                                                                    
+         8 SOPHIA JOHNSON            F         32 BBSR                                              
+        2650.99                                                                                     
+                                                                                                    
+         9 NOAH BROWN                M         45 DELHI                                             
+        3450.99                                                                                     
+                                                                                                    
+
+   CUST_ID CUST_NAME                 G        AGE CITY                                              
+---------- ------------------------- - ---------- --------------------------------------------------
+PURCHASE_AMOUNT                                                                                     
+---------------                                                                                     
+        10 ARIA BROWN                T         35 CTC                                               
+        3650.19                                                                                     
+                                                                                                    
+
+10 rows selected.
+
+SQL> SET LINESIZE 200;
+SQL> SELECT * FROM CUSTOMER;
+
+   CUST_ID CUST_NAME                 G        AGE CITY                                               PURCHASE_AMOUNT                                                                                    
+---------- ------------------------- - ---------- -------------------------------------------------- ---------------                                                                                    
+         1 JOHN DOE                  M         35 BBSR                                                       6000.99                                                                                    
+         2 JANE DOE                  F         30 MUMBAI                                                     8120.99                                                                                    
+         3 ALEX SMITH                T         25 CTC                                                        7000.99                                                                                    
+         4 EMMA WATSON               M         27 DELHI                                                      6510.49                                                                                    
+         5 HARRY POTTER              F         32 BBSR                                                       1210.79                                                                                    
+         6 AVA LEE                   M         40 CTC                                                        4310.99                                                                                    
+         7 LIAM JOHNSON              T         28 MUMBAI                                                     2142.99                                                                                    
+         8 SOPHIA JOHNSON            F         32 BBSR                                                       2650.99                                                                                    
+         9 NOAH BROWN                M         45 DELHI                                                      3450.99                                                                                    
+        10 ARIA BROWN                T         35 CTC                                                        3650.19                                                                                    
+
+10 rows selected.
+
+SQL> ALTER TABLE CUSTOMER MODIFY CITY VARCHAR2(15);
+
+Table altered.
+
+SQL> SELECT * FROM CUSTOMER;
+
+   CUST_ID CUST_NAME                 G        AGE CITY            PURCHASE_AMOUNT                                                                                                                       
+---------- ------------------------- - ---------- --------------- ---------------                                                                                                                       
+         1 JOHN DOE                  M         35 BBSR                    6000.99                                                                                                                       
+         2 JANE DOE                  F         30 MUMBAI                  8120.99                                                                                                                       
+         3 ALEX SMITH                T         25 CTC                     7000.99                                                                                                                       
+         4 EMMA WATSON               M         27 DELHI                   6510.49                                                                                                                       
+         5 HARRY POTTER              F         32 BBSR                    1210.79                                                                                                                       
+         6 AVA LEE                   M         40 CTC                     4310.99                                                                                                                       
+         7 LIAM JOHNSON              T         28 MUMBAI                  2142.99                                                                                                                       
+         8 SOPHIA JOHNSON            F         32 BBSR                    2650.99                                                                                                                       
+         9 NOAH BROWN                M         45 DELHI                   3450.99                                                                                                                       
+        10 ARIA BROWN                T         35 CTC                     3650.19                                                                                                                       
+
+10 rows selected.
+
+SQL> SLECT CUST_NAME, CITY WHERE GENDER='M' AND PURCHASE_AMOUNT>=5000;
+SP2-0734: unknown command beginning "SLECT CUST..." - rest of line ignored.
+SQL> SELECT CUST_NAME, CITY WHERE GENDER='M' AND PURCHASE_AMOUNT>=5000;
+SELECT CUST_NAME, CITY WHERE GENDER='M' AND PURCHASE_AMOUNT>=5000
+                       *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT CUST_NAME, CITY FROM CUSTOMER WHERE GENDER='M' AND PURCHASE_AMOUNT>=5000;
+
+CUST_NAME                 CITY                                                                                                                                                                          
+------------------------- ---------------                                                                                                                                                               
+JOHN DOE                  BBSR                                                                                                                                                                          
+EMMA WATSON               DELHI                                                                                                                                                                         
+
+SQL> SLECT * FROM CUSTOMER WHERE CUST_NAME LIKE 'A%' OR CUST_NAME LIKE '%a';
+SP2-0734: unknown command beginning "SLECT * FR..." - rest of line ignored.
+SQL> SELECT * FROM CUSTOMER WHERE CUST_NAME LIKE 'A%' OR CUST_NAME LIKE '%a';
+
+   CUST_ID CUST_NAME                 G        AGE CITY            PURCHASE_AMOUNT                                                                                                                       
+---------- ------------------------- - ---------- --------------- ---------------                                                                                                                       
+         3 ALEX SMITH                T         25 CTC                     7000.99                                                                                                                       
+         6 AVA LEE                   M         40 CTC                     4310.99                                                                                                                       
+        10 ARIA BROWN                T         35 CTC                     3650.19                                                                                                                       
+
+SQL> SELECT * FROM CUSTOMER WHERE GENDER='F' ORDER BY PURCHASE_AMOUNT DESC;
+
+   CUST_ID CUST_NAME                 G        AGE CITY            PURCHASE_AMOUNT                                                                                                                       
+---------- ------------------------- - ---------- --------------- ---------------                                                                                                                       
+         2 JANE DOE                  F         30 MUMBAI                  8120.99                                                                                                                       
+         8 SOPHIA JOHNSON            F         32 BBSR                    2650.99                                                                                                                       
+         5 HARRY POTTER              F         32 BBSR                    1210.79                                                                                                                       
+
+SQL> ALTER TABLE CUSTOMER MODIFY PURCHASE_AMOUNT NUMBER(10,2) NOT NULL; 
+
+SQL> SPOOL OFF;

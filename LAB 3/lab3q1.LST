@@ -1,0 +1,95 @@
+SQL> select * from item_master
+  2  ;
+
+ITEM_ NAME                    QTY_AVL C UNIT    RDR_LVL    RDR_QTY       RATE   
+----- -------------------- ---------- - ---- ---------- ---------- ----------   
+I01   MOBILE                     5000 A pcs         500       2000       8999   
+I02   HEAFDPHONE                 1000 A pcs         300       1000        999   
+I03   CHARGER                     700 A pcs         400       1000        399   
+I04   MONITOR                    1000 B pcs         100       2000      10000   
+I05   MOUSE                       100 B pcs         100        200        500   
+I06   KEYBOARD                    100 B pcs          50        200        800   
+I07   HDD                         100 B pcs         100        500       3000   
+I08   FRIDGE                      100 C pcs         100        500      15000   
+I09   TV SET                     1000 C pcs         500       5000      30000   
+I10   AC                         1000 C pcs         500       3000      40000   
+
+10 rows selected.
+
+SQL> select * from item_master where category='A' and rate<1000;
+
+ITEM_ NAME                    QTY_AVL C UNIT    RDR_LVL    RDR_QTY       RATE   
+----- -------------------- ---------- - ---- ---------- ---------- ----------   
+I02   HEAFDPHONE                 1000 A pcs         300       1000        999   
+I03   CHARGER                     700 A pcs         400       1000        399   
+
+SQL> select * from item_master where category='B' order by qty_avl desc;
+
+ITEM_ NAME                    QTY_AVL C UNIT    RDR_LVL    RDR_QTY       RATE   
+----- -------------------- ---------- - ---- ---------- ---------- ----------   
+I04   MONITOR                    1000 B pcs         100       2000      10000   
+I06   KEYBOARD                    100 B pcs          50        200        800   
+I07   HDD                         100 B pcs         100        500       3000   
+I05   MOUSE                       100 B pcs         100        200        500   
+
+SQL> select * from item_master where name like 'M%' order by RDR_LVL desc;
+
+ITEM_ NAME                    QTY_AVL C UNIT    RDR_LVL    RDR_QTY       RATE   
+----- -------------------- ---------- - ---- ---------- ---------- ----------   
+I01   MOBILE                     5000 A pcs         500       2000       8999   
+I05   MOUSE                       100 B pcs         100        200        500   
+I04   MONITOR                    1000 B pcs         100       2000      10000   
+
+SQL> select NAME from item_master where name like 'M%' order by NAME;
+
+NAME                                                                            
+--------------------                                                            
+MOBILE                                                                          
+MONITOR                                                                         
+MOUSE                                                                           
+
+SQL> select NAME from item_master order by NAME;
+
+NAME                                                                            
+--------------------                                                            
+AC                                                                              
+CHARGER                                                                         
+FRIDGE                                                                          
+HDD                                                                             
+HEAFDPHONE                                                                      
+KEYBOARD                                                                        
+MOBILE                                                                          
+MONITOR                                                                         
+MOUSE                                                                           
+TV SET                                                                          
+
+10 rows selected.
+
+SQL> create table ITEM_TRANS(It_no varchar2(5),Trans_date date,qty number(4));
+
+Table created.
+
+SQL> DESC ITEM_TRANS;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ IT_NO                                              VARCHAR2(5)
+ TRANS_DATE                                         DATE
+ QTY                                                NUMBER(4)
+
+SQL> ALTER TABLE ITEM_TRANS
+  2  ADD FOREIGN KEY (IT_NO) REFERENCES ITEM_MASTER(ITEM_NO);
+
+Table altered.
+
+SQL> DESC ITEM_TRANS;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ IT_NO                                              VARCHAR2(5)
+ TRANS_DATE                                         DATE
+ QTY                                                NUMBER(4)
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SPOOL OFF;

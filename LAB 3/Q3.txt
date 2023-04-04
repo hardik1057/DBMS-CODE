@@ -1,0 +1,191 @@
+SQL> CREATE TABLE EMP( EMP_ID NUMBER(4), EMP_NAME VARCHAR2(15), DESIGNATION VARCHAR2(15),MANAGER_ID NUMBER(4), HIRE_DATE DATE, SALARY NUMBER(6), COMMISSION NUMBER(6), DEPT_ID NUMBER(3));
+
+Table created.
+
+SQL> DESC EMP;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ EMP_ID                                                         NUMBER(4)
+ EMP_NAME                                                       VARCHAR2(15)
+ DESIGNATION                                                    VARCHAR2(15)
+ MANAGER_ID                                                     NUMBER(4)
+ HIRE_DATE                                                      DATE
+ SALARY                                                         NUMBER(6)
+ COMMISSION                                                     NUMBER(6)
+ DEPT_ID                                                        NUMBER(3)
+
+SQL> INSERT INTO EMP VALUES (7369, 'SMITH', 'CLERK', 7902, '17-DEC-80', 800, 20, 30);
+
+1 row created.
+
+SQL> INSERT INTO EMP VALUES (7499, 'ALLEN', 'SALESMAN', 7698, '22-FEB-81', 1600, 300, 30);
+
+1 row created.
+
+SQL> INSERT INTO EMP VALUES (7521, 'WARD', 'SALESMAN', 7698, '02-APR-81', 1250, 500, 30);
+
+1 row created.
+
+SQL> INSERT INTO EMP VALUES (7566, 'JONES', 'MANAGER', 7839, '28-SEP-81', 2975, 20, 20);
+
+1 row created.
+
+SQL> INSERT INTO EMP VALUES (7654, 'MARTIN', 'SALESMAN', 7698, '01-MAY-81', 1250, 1400, 30);
+
+1 row created.
+
+SQL> INSERT INTO EMP VALUES (7698, 'BLAKE', 'MANAGER', 7839, '09-JUN-81', 2850, 30, 20);
+
+1 row created.
+
+SQL> INSERT INTO EMP VALUES (7782, 'CLARK', 'MANAGER', 7839, '09-NOV-81', 2450, 10, 10);
+
+1 row created.
+
+SQL> INSERT INTO EMP VALUES (7788, 'SCOTT', 'ANALYST', 7566, '17-NOV-81', 3000, 20, 20);
+
+1 row created.
+
+SQL> INSERT INTO EMP VALUES (7839, 'KING', 'PRESIDENT', NULL, '23-SEP-81', 5000, 10, 10);
+
+1 row created.
+
+SQL> INSERT INTO EMP VALUES (7844, 'TURNER', 'SALESMAN', 7698, '03-DEC-81', 1500, 1500, 30);
+
+1 row created.
+
+SQL> INSERT INTO EMP VALUES (7876, 'ADAMS', 'CLERK', 7788, '03-DEC-81', 1100, 20, 20);
+
+1 row created.
+
+SQL> INSERT INTO EMP VALUES (7900, 'JAMES', 'CLERK', 7698, '23-DEC-81', 950, 10, 20);
+
+1 row created.
+
+SQL> INSERT INTO EMP VALUES (7902, 'FORD', 'ANALYST', 7566, '03-DEC-81', 3000, 20, 20);
+
+1 row created.
+
+SQL> INSERT INTO EMP VALUES (7934, 'MILLER', 'CLERK', 7782, '23-JAN-82', 1300, 10, 10);
+
+1 row created.
+
+SQL> SELECT * FROM EMP;
+
+    EMP_ID EMP_NAME        DESIGNATION     MANAGER_ID HIRE_DATE     SALARY COMMISSION    DEPT_ID    
+---------- --------------- --------------- ---------- --------- ---------- ---------- ----------    
+      7369 SMITH           CLERK                 7902 17-DEC-80        800         20         30    
+      7499 ALLEN           SALESMAN              7698 22-FEB-81       1600        300         30    
+      7521 WARD            SALESMAN              7698 02-APR-81       1250        500         30    
+      7566 JONES           MANAGER               7839 28-SEP-81       2975         20         20    
+      7654 MARTIN          SALESMAN              7698 01-MAY-81       1250       1400         30    
+      7698 BLAKE           MANAGER               7839 09-JUN-81       2850         30         20    
+      7782 CLARK           MANAGER               7839 09-NOV-81       2450         10         10    
+      7788 SCOTT           ANALYST               7566 17-NOV-81       3000         20         20    
+      7839 KING            PRESIDENT                  23-SEP-81       5000         10         10    
+      7844 TURNER          SALESMAN              7698 03-DEC-81       1500       1500         30    
+      7876 ADAMS           CLERK                 7788 03-DEC-81       1100         20         20    
+
+    EMP_ID EMP_NAME        DESIGNATION     MANAGER_ID HIRE_DATE     SALARY COMMISSION    DEPT_ID    
+---------- --------------- --------------- ---------- --------- ---------- ---------- ----------    
+      7900 JAMES           CLERK                 7698 23-DEC-81        950         10         20    
+      7902 FORD            ANALYST               7566 03-DEC-81       3000         20         20    
+      7934 MILLER          CLERK                 7782 23-JAN-82       1300         10         10    
+
+14 rows selected.
+
+SQL> SELECT * FROM EMP WHERE HIRE_DATE > '01-MAY-81';
+
+    EMP_ID EMP_NAME        DESIGNATION     MANAGER_ID HIRE_DATE     SALARY COMMISSION    DEPT_ID    
+---------- --------------- --------------- ---------- --------- ---------- ---------- ----------    
+      7566 JONES           MANAGER               7839 28-SEP-81       2975         20         20    
+      7698 BLAKE           MANAGER               7839 09-JUN-81       2850         30         20    
+      7782 CLARK           MANAGER               7839 09-NOV-81       2450         10         10    
+      7788 SCOTT           ANALYST               7566 17-NOV-81       3000         20         20    
+      7839 KING            PRESIDENT                  23-SEP-81       5000         10         10    
+      7844 TURNER          SALESMAN              7698 03-DEC-81       1500       1500         30    
+      7876 ADAMS           CLERK                 7788 03-DEC-81       1100         20         20    
+      7900 JAMES           CLERK                 7698 23-DEC-81        950         10         20    
+      7902 FORD            ANALYST               7566 03-DEC-81       3000         20         20    
+      7934 MILLER          CLERK                 7782 23-JAN-82       1300         10         10    
+
+10 rows selected.
+
+SQL> SELECT EMP_ID, EMP_NAME, DESIGNATION FROM EMP WHERE MANAGER_ID=7698;
+
+    EMP_ID EMP_NAME        DESIGNATION                                                              
+---------- --------------- ---------------                                                          
+      7499 ALLEN           SALESMAN                                                                 
+      7521 WARD            SALESMAN                                                                 
+      7654 MARTIN          SALESMAN                                                                 
+      7844 TURNER          SALESMAN                                                                 
+      7900 JAMES           CLERK                                                                    
+
+SQL> SELECT EMP_ID, EMP_NAME, DESIGNATION FROM EMP WHERE MANAGER_ID=7698 OR DEPT_ID=20;
+
+    EMP_ID EMP_NAME        DESIGNATION                                                              
+---------- --------------- ---------------                                                          
+      7499 ALLEN           SALESMAN                                                                 
+      7521 WARD            SALESMAN                                                                 
+      7566 JONES           MANAGER                                                                  
+      7654 MARTIN          SALESMAN                                                                 
+      7698 BLAKE           MANAGER                                                                  
+      7788 SCOTT           ANALYST                                                                  
+      7844 TURNER          SALESMAN                                                                 
+      7876 ADAMS           CLERK                                                                    
+      7900 JAMES           CLERK                                                                    
+      7902 FORD            ANALYST                                                                  
+
+
+SQL> SELECT * FROM EMP WHERE MANAGER_ID=7839 OR DEPT_ID=20;
+
+    EMP_ID EMP_NAME        DESIGNATION     MANAGER_ID HIRE_DATE     SALARY COMMISSION    DEPT_ID    
+---------- --------------- --------------- ---------- --------- ---------- ---------- ----------    
+      7566 JONES           MANAGER               7839 28-SEP-81       2975         20         20    
+      7698 BLAKE           MANAGER               7839 09-JUN-81       2850         30         20    
+      7782 CLARK           MANAGER               7839 09-NOV-81       2450         10         10    
+      7788 SCOTT           ANALYST               7566 17-NOV-81       3000         20         20    
+      7876 ADAMS           CLERK                 7788 03-DEC-81       1100         20         20    
+      7900 JAMES           CLERK                 7698 23-DEC-81        950         10         20    
+      7902 FORD            ANALYST               7566 03-DEC-81       3000         20         20    
+
+7 rows selected.
+
+SQL> SELECT EMP_NAME, SALARY, MANAGER_ID FROM EMP WHERE DEPT_ID=30 AND HIRE_DATE > '2-FEB-81';
+
+EMP_NAME            SALARY MANAGER_ID
+--------------- ---------- ----------
+ALLEN                 1600       7698
+WARD                  1250       7698
+MARTIN                1250       7698
+TURNER                1500       7698
+
+SQL> SELECT EMP_ID, EMP_NAME FROM EMP ORDER BY SALARY;
+
+    EMP_ID EMP_NAME
+---------- ---------------
+      7369 SMITH
+      7900 JAMES
+      7876 ADAMS
+      7521 WARD
+      7654 MARTIN
+      7934 MILLER
+      7844 TURNER
+      7499 ALLEN
+      7782 CLARK
+      7698 BLAKE
+      7566 JONES
+
+    EMP_ID EMP_NAME
+---------- ---------------
+      7788 SCOTT
+      7902 FORD
+      7839 KING
+
+14 rows selected.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SPOOL OFF;

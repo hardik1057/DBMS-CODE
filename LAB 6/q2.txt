@@ -1,0 +1,212 @@
+SQL> CREATE TABLE STUDENTT (YOA NUMBER(4), ROLL NUMBER(8), SE VARCHAR2(2) CHECK (SE IN ('CS', 'IT')), GR VARCHAR2(3) CHECK(GR IN ('GR4', 'GR6' ,'GR7')), CON NUMBER(5,2));
+
+Table created.
+
+SQL>  INSERT INTO STUDENTT VALUES(2018,1805028,'CS','GR4',80.5);
+
+1 row created.
+
+SQL> INSERT INTO STUDENTT VALUES(2018,1805077,'IT','GR6',87.5);
+
+1 row created.
+
+SQL> INSERT INTO STUDENTT VALUES(2019,1805062,'IT','GR7',90.5);
+
+1 row created.
+
+SQL> INSERT INTO STUDENTT VALUES(2019,1805065,'CS','GR7',92.5);
+
+1 row created.
+
+SQL> INSERT INTO STUDENTT VALUES(2017,1806777,'CS','GR6',92.5);
+
+1 row created.
+
+SQL> INSERT INTO STUDENTT VALUES(2018,1806789,'CS','GR4',95.59);
+
+1 row created.
+
+SQL> INSERT INTO STUDENTT VALUES(2019,1805053,'IT','GR6',99.91);
+
+1 row created.
+
+SQL> INSERT INTO STUDENTT VALUES(2018,1805653,'IT','GR6',100);
+
+1 row created.
+
+SQL> INSERT INTO STUDENTT VALUES(2019,1805657,'CS','GR7',100);
+
+1 row created.
+
+SQL> INSERT INTO STUDENTT VALUES(2019,1805650,'CS','GR7',100);
+
+1 row created.
+
+SQL> SELECT * FROM STUDENTT;
+
+       YOA       ROLL SE GR         CON                                                                                                                                                                 
+---------- ---------- -- --- ----------                                                                                                                                                                 
+      2018    1805028 CS GR4       80.5                                                                                                                                                                 
+      2018    1805077 IT GR6       87.5                                                                                                                                                                 
+      2019    1805062 IT GR7       90.5                                                                                                                                                                 
+      2019    1805065 CS GR7       92.5                                                                                                                                                                 
+      2017    1806777 CS GR6       92.5                                                                                                                                                                 
+      2018    1806789 CS GR4      95.59                                                                                                                                                                 
+      2019    1805053 IT GR6      99.91                                                                                                                                                                 
+      2018    1805653 IT GR6        100                                                                                                                                                                 
+      2019    1805657 CS GR7        100                                                                                                                                                                 
+      2019    1805650 CS GR7        100                                                                                                                                                                 
+
+10 rows selected.
+
+SQL> SELECT * FROM STUDENTT ORDER BY YOA;
+
+       YOA       ROLL SE GR         CON                                                                                                                                                                 
+---------- ---------- -- --- ----------                                                                                                                                                                 
+      2017    1806777 CS GR6       92.5                                                                                                                                                                 
+      2018    1805077 IT GR6       87.5                                                                                                                                                                 
+      2018    1806789 CS GR4      95.59                                                                                                                                                                 
+      2018    1805653 IT GR6        100                                                                                                                                                                 
+      2018    1805028 CS GR4       80.5                                                                                                                                                                 
+      2019    1805657 CS GR7        100                                                                                                                                                                 
+      2019    1805053 IT GR6      99.91                                                                                                                                                                 
+      2019    1805650 CS GR7        100                                                                                                                                                                 
+      2019    1805065 CS GR7       92.5                                                                                                                                                                 
+      2019    1805062 IT GR7       90.5                                                                                                                                                                 
+
+10 rows selected.
+
+SQL> SELECT * FROM STUDENTT ORDER BY ROLL;
+
+       YOA       ROLL SE GR         CON                                                                                                                                                                 
+---------- ---------- -- --- ----------                                                                                                                                                                 
+      2018    1805028 CS GR4       80.5                                                                                                                                                                 
+      2019    1805053 IT GR6      99.91                                                                                                                                                                 
+      2019    1805062 IT GR7       90.5                                                                                                                                                                 
+      2019    1805065 CS GR7       92.5                                                                                                                                                                 
+      2018    1805077 IT GR6       87.5                                                                                                                                                                 
+      2019    1805650 CS GR7        100                                                                                                                                                                 
+      2018    1805653 IT GR6        100                                                                                                                                                                 
+      2019    1805657 CS GR7        100                                                                                                                                                                 
+      2017    1806777 CS GR6       92.5                                                                                                                                                                 
+      2018    1806789 CS GR4      95.59                                                                                                                                                                 
+
+10 rows selected.
+
+SQL> SELECT * FROM STUDENTT ORDER BY CON;
+
+       YOA       ROLL SE GR         CON                                                                                                                                                                 
+---------- ---------- -- --- ----------                                                                                                                                                                 
+      2018    1805028 CS GR4       80.5                                                                                                                                                                 
+      2018    1805077 IT GR6       87.5                                                                                                                                                                 
+      2019    1805062 IT GR7       90.5                                                                                                                                                                 
+      2019    1805065 CS GR7       92.5                                                                                                                                                                 
+      2017    1806777 CS GR6       92.5                                                                                                                                                                 
+      2018    1806789 CS GR4      95.59                                                                                                                                                                 
+      2019    1805053 IT GR6      99.91                                                                                                                                                                 
+      2018    1805653 IT GR6        100                                                                                                                                                                 
+      2019    1805657 CS GR7        100                                                                                                                                                                 
+      2019    1805650 CS GR7        100                                                                                                                                                                 
+
+10 rows selected.
+
+SQL> SELECT COUNT(*) FROM STUDENTT;
+
+  COUNT(*)                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+        10                                                                                                                                                                                              
+
+SQL> SELECT SUM(CON) FROM STUDENTT WHERE GR='GR6';
+
+  SUM(CON)                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+    379.91                                                                                                                                                                                              
+
+SQL> SELECT AVG(CON) FROM STUDENTT WHERE GR='GR7';
+
+  AVG(CON)                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+     95.75                                                                                                                                                                                              
+
+SQL> SELECT MAX(CON) FROM STUDENTT WHERE GR='GR4';
+
+  MAX(CON)                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+     95.59                                                                                                                                                                                              
+
+SQL> SELECT MIN(CON) FROM STUDENTT WHERE SE='CS';
+
+  MIN(CON)                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+      80.5                                                                                                                                                                                              
+
+SQL> SELECT ROLL FROM STUDENTT WHERE CON=(SELECT MAX(CON) FROM STUDENTT);
+
+      ROLL                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+   1805653                                                                                                                                                                                              
+   1805657                                                                                                                                                                                              
+   1805650                                                                                                                                                                                              
+
+SQL> SELECT ROLL,YOA FROM STUDENTT WHERE CON=(SELECT MIN(CON) FROM STUDENTT);
+
+      ROLL        YOA                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+   1805028       2018                                                                                                                                                                                   
+
+SQL> SELECT COUNT(*) FROM STUDENTT WHERE GR='GR7';
+
+  COUNT(*)                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+         4                                                                                                                                                                                              
+
+SQL> SELECT COUNT(*) FROM STUDENTT GROUP BY GR;
+
+  COUNT(*)                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+         4                                                                                                                                                                                              
+         4                                                                                                                                                                                              
+         2                                                                                                                                                                                              
+
+SQL> SELECT GR,SUM(CON) FROM STUDENTT GROUP BY GR;
+
+GR    SUM(CON)                                                                                                                                                                                          
+--- ----------                                                                                                                                                                                          
+GR7        383                                                                                                                                                                                          
+GR6     379.91                                                                                                                                                                                          
+GR4     176.09                                                                                                                                                                                          
+
+SQL> SELECT GR,AVG(CON) FROM STUDENTT GROUP BY GR HAVING AVG(CON) > 90;
+
+GR    AVG(CON)                                                                                                                                                                                          
+--- ----------                                                                                                                                                                                          
+GR7      95.75                                                                                                                                                                                          
+GR6    94.9775                                                                                                                                                                                          
+
+SQL> SELECT SE,COUNT(*),SUM(CON) FROM STUDENTT GROUP BY SE;
+
+SE   COUNT(*)   SUM(CON)                                                                                                                                                                                
+-- ---------- ----------                                                                                                                                                                                
+IT          4     377.91                                                                                                                                                                                
+CS          6     561.09                                                                                                                                                                                
+
+SQL>  SELECT SE,COUNT(*),SUM(CON) FROM STUDENTT WHERE YOA=2019 GROUP BY SE;
+
+SE   COUNT(*)   SUM(CON)                                                                                                                                                                                
+-- ---------- ----------                                                                                                                                                                                
+IT          2     190.41                                                                                                                                                                                
+CS          3      292.5                                                                                                                                                                                
+
+SQL> SELECT YOA,MAX(CON) FROM STUDENTT GROUP BY YOA;
+
+       YOA   MAX(CON)                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+      2018        100                                                                                                                                                                                   
+      2017       92.5                                                                                                                                                                                   
+      2019        100                                                                                                                                                                                   
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SPOOL OFF;

@@ -1,0 +1,142 @@
+SQL> CREATE TABLE BOOK(ID VARCHAR2(3),TITLE VARCHAR2(10),AUTHOR VARCHAR2(15),YOP NUMBER(4),PUBLISHER VARCHAR2(10));
+
+Table created.
+
+SQL> INSERT INTO BOOK VALUES('B01','DBMS','NAVATHE',2017,'PEARSON');
+
+1 row created.
+
+SQL> INSERT INTO BOOK VALUES('B02','SE','RAJIB MALL',2015,'EEE');
+
+1 row created.
+
+SQL> INSERT INTO BOOK VALUES('B03','C PROG.','Y KANTEKAR',2009,'TMH');
+
+1 row created.
+
+SQL> INSERT INTO BOOK VALUES('B04','OS','GALVIN',2015,'TMH');
+
+1 row created.
+
+SQL>  INSERT INTO BOOK VALUES('B05','DSA','FOROUZAN',2017,'PEARSON');
+
+1 row created.
+
+SQL> CREATE TABLE ARTICLE(ID VARCHAR2(3),TITLE VARCHAR2(10),AUTHOR VARCHAR2(15),YOP NUMBER(4),PUBLISHER VARCHAR2(10));
+
+Table created.
+
+SQL>  INSERT INTO ARTICLE VALUES('A01','TESTING','RAJIB MALL',2017,'SPRINGER');
+
+1 row created.
+
+SQL> INSERT INTO ARTICLE VALUES('A02','POINTERS','BALAGURUSAMY',2012,'IEEE');
+
+1 row created.
+
+SQL>  INSERT INTO ARTICLE VALUES('A03','BST','AMIYA RATH',2015,'ELSEVIER');
+
+1 row created.
+
+SQL>  INSERT INTO ARTICLE VALUES('A04','ML','AJAY JENA',2018,'IEEE');
+
+1 row created.
+
+SQL>  INSERT INTO ARTICLE VALUES('A05','TCP','RAJIB MALL',2017,'SPRINGER');
+
+1 row created.
+
+SQL> SELECT * FROM BOOK
+  2  ;
+
+ID  TITLE      AUTHOR                 YOP PUBLISHER                             
+--- ---------- --------------- ---------- ----------                            
+B01 DBMS       NAVATHE               2017 PEARSON                               
+B02 SE         RAJIB MALL            2015 EEE                                   
+B03 C PROG.    Y KANTEKAR            2009 TMH                                   
+B04 OS         GALVIN                2015 TMH                                   
+B05 DSA        FOROUZAN              2017 PEARSON                               
+
+SQL> SELECT * FROM ARTICLE;
+
+ID  TITLE      AUTHOR                 YOP PUBLISHER                             
+--- ---------- --------------- ---------- ----------                            
+A01 TESTING    RAJIB MALL            2017 SPRINGER                              
+A02 POINTERS   BALAGURUSAMY          2012 IEEE                                  
+A03 BST        AMIYA RATH            2015 ELSEVIER                              
+A04 ML         AJAY JENA             2018 IEEE                                  
+A05 TCP        RAJIB MALL            2017 SPRINGER                              
+
+SQL> SELECT AUTHOR FROM BOOK UNION SELECT AUTHOR FROM ARTICLE;
+
+AUTHOR                                                                          
+---------------                                                                 
+AJAY JENA                                                                       
+AMIYA RATH                                                                      
+BALAGURUSAMY                                                                    
+FOROUZAN                                                                        
+GALVIN                                                                          
+NAVATHE                                                                         
+RAJIB MALL                                                                      
+Y KANTEKAR                                                                      
+
+8 rows selected.
+
+SQL> SELECT AUTHOR FROM BOOK INTERSECT SELECT AUTHOR FROM ARTICLE;
+
+AUTHOR                                                                          
+---------------                                                                 
+RAJIB MALL                                                                      
+
+SQL> SELECT AUTHOR FROM BOOK MINUS SELECT AUTHOR FROM ARTICLE;
+
+AUTHOR                                                                          
+---------------                                                                 
+FOROUZAN                                                                        
+GALVIN                                                                          
+NAVATHE                                                                         
+Y KANTEKAR                                                                      
+
+SQL> SELECT AUTHOR FROM ARTICLE MINUS SELECT AUTHOR FROM BOOK;
+
+AUTHOR                                                                          
+---------------                                                                 
+AJAY JENA                                                                       
+AMIYA RATH                                                                      
+BALAGURUSAMY                                                                    
+
+SQL> SET LINESIZE 200;
+SQL> SET PAGESIZE 200;
+SQL> SELECT * FROM BOOK CROSS JOIN ARTICLE;
+
+ID  TITLE      AUTHOR                 YOP PUBLISHER  ID  TITLE      AUTHOR                 YOP PUBLISHER                                                                                                
+--- ---------- --------------- ---------- ---------- --- ---------- --------------- ---------- ----------                                                                                               
+B01 DBMS       NAVATHE               2017 PEARSON    A01 TESTING    RAJIB MALL            2017 SPRINGER                                                                                                 
+B01 DBMS       NAVATHE               2017 PEARSON    A02 POINTERS   BALAGURUSAMY          2012 IEEE                                                                                                     
+B01 DBMS       NAVATHE               2017 PEARSON    A03 BST        AMIYA RATH            2015 ELSEVIER                                                                                                 
+B01 DBMS       NAVATHE               2017 PEARSON    A04 ML         AJAY JENA             2018 IEEE                                                                                                     
+B01 DBMS       NAVATHE               2017 PEARSON    A05 TCP        RAJIB MALL            2017 SPRINGER                                                                                                 
+B02 SE         RAJIB MALL            2015 EEE        A01 TESTING    RAJIB MALL            2017 SPRINGER                                                                                                 
+B02 SE         RAJIB MALL            2015 EEE        A02 POINTERS   BALAGURUSAMY          2012 IEEE                                                                                                     
+B02 SE         RAJIB MALL            2015 EEE        A03 BST        AMIYA RATH            2015 ELSEVIER                                                                                                 
+B02 SE         RAJIB MALL            2015 EEE        A04 ML         AJAY JENA             2018 IEEE                                                                                                     
+B02 SE         RAJIB MALL            2015 EEE        A05 TCP        RAJIB MALL            2017 SPRINGER                                                                                                 
+B03 C PROG.    Y KANTEKAR            2009 TMH        A01 TESTING    RAJIB MALL            2017 SPRINGER                                                                                                 
+B03 C PROG.    Y KANTEKAR            2009 TMH        A02 POINTERS   BALAGURUSAMY          2012 IEEE                                                                                                     
+B03 C PROG.    Y KANTEKAR            2009 TMH        A03 BST        AMIYA RATH            2015 ELSEVIER                                                                                                 
+B03 C PROG.    Y KANTEKAR            2009 TMH        A04 ML         AJAY JENA             2018 IEEE                                                                                                     
+B03 C PROG.    Y KANTEKAR            2009 TMH        A05 TCP        RAJIB MALL            2017 SPRINGER                                                                                                 
+B04 OS         GALVIN                2015 TMH        A01 TESTING    RAJIB MALL            2017 SPRINGER                                                                                                 
+B04 OS         GALVIN                2015 TMH        A02 POINTERS   BALAGURUSAMY          2012 IEEE                                                                                                     
+B04 OS         GALVIN                2015 TMH        A03 BST        AMIYA RATH            2015 ELSEVIER                                                                                                 
+B04 OS         GALVIN                2015 TMH        A04 ML         AJAY JENA             2018 IEEE                                                                                                     
+B04 OS         GALVIN                2015 TMH        A05 TCP        RAJIB MALL            2017 SPRINGER                                                                                                 
+B05 DSA        FOROUZAN              2017 PEARSON    A01 TESTING    RAJIB MALL            2017 SPRINGER                                                                                                 
+B05 DSA        FOROUZAN              2017 PEARSON    A02 POINTERS   BALAGURUSAMY          2012 IEEE                                                                                                     
+B05 DSA        FOROUZAN              2017 PEARSON    A03 BST        AMIYA RATH            2015 ELSEVIER                                                                                                 
+B05 DSA        FOROUZAN              2017 PEARSON    A04 ML         AJAY JENA             2018 IEEE                                                                                                     
+B05 DSA        FOROUZAN              2017 PEARSON    A05 TCP        RAJIB MALL            2017 SPRINGER                                                                                                 
+
+25 rows selected.
+
+SQL> SPOOL OFF;

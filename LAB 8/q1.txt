@@ -1,0 +1,461 @@
+SQL> CREATE TABLE DEPARTMENT(D_ID VARCHAR2(3) PRIMARY KEY , D_NAME VARCHAR2(12), CAMPUS NUMBER(2));
+
+Table created.
+
+SQL> CREATE TABLE EMPLOYEES(EMP_ID VARCHAR2(3) PRIMARY KEY, EMP_NAME VARCHAR2(3), SALARY NUMBER(6), D_ID VARCHAR2(3), FOREIGN KEY (D_ID) REFERENCES DEPARTMENT(D_ID));
+
+Table created.
+
+SQL> DESC EMPLOYEES;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                    NOT NULL VARCHAR2(3)
+ EMP_NAME                                           VARCHAR2(3)
+ SALARY                                             NUMBER(6)
+ D_ID                                               VARCHAR2(3)
+
+SQL> DESC DEPARTMENT;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ D_ID                                      NOT NULL VARCHAR2(3)
+ D_NAME                                             VARCHAR2(12)
+ CAMPUS                                             NUMBER(2)
+
+SQL> INSERT INTO DEPARTMENT VALUES('D01','CSE',15);
+
+1 row created.
+
+SQL> INSERT INTO DEPARTMENT VALUES('D02','IT',15);
+
+1 row created.
+
+SQL> INSERT INTO DEPARTMENT VALUES('D03','CSCE',15);
+
+1 row created.
+
+SQL> INSERT INTO DEPARTMENT VALUES('D04','CSSE',15);
+
+1 row created.
+
+SQL> INSERT INTO DEPARTMENT VALUES('D05','ARCH',7);
+
+1 row created.
+
+SQL> INSERT INTO DEPARTMENT VALUES('D06','ETC',12);
+
+1 row created.
+
+SQL> INSERT INTO DEPARTMENT VALUES('D07','EI',12);
+
+1 row created.
+
+SQL> INSERT INTO DEPARTMENT VALUES('D08','CIVIL',3);
+
+1 row created.
+
+SQL>  INSERT INTO DEPARTMENT VALUES('D09','EEE',3);
+
+1 row created.
+
+SQL>  INSERT INTO DEPARTMENT VALUES('D10','HR',4);
+
+1 row created.
+
+SQL> INSERT INTO DEPARTMENT VALUES('D11','ACCOUNTS',4);
+
+1 row created.
+
+SQL> INSERT INTO DEPARTMENT VALUES('D12','ADMIN',4);
+
+1 row created.
+
+SQL> INSERT INTO DEPARTMENT VALUES('D13','ADMISSION',1);
+
+1 row created.
+
+SQL>  INSERT INTO DEPARTMENT VALUES('D14','MEDICAL',5);
+
+1 row created.
+
+SQL>  INSERT INTO DEPARTMENT VALUES('D15','MGMT',5);
+
+1 row created.
+
+SQL> SELECT * FROM DEPARTMENT;
+
+D_I D_NAME           CAMPUS                                                     
+--- ------------ ----------                                                     
+D01 CSE                  15                                                     
+D02 IT                   15                                                     
+D03 CSCE                 15                                                     
+D04 CSSE                 15                                                     
+D05 ARCH                  7                                                     
+D06 ETC                  12                                                     
+D07 EI                   12                                                     
+D08 CIVIL                 3                                                     
+D09 EEE                   3                                                     
+D10 HR                    4                                                     
+D11 ACCOUNTS              4                                                     
+
+D_I D_NAME           CAMPUS                                                     
+--- ------------ ----------                                                     
+D12 ADMIN                 4                                                     
+D13 ADMISSION             1                                                     
+D14 MEDICAL               5                                                     
+D15 MGMT                  5                                                     
+
+15 rows selected.
+
+SQL> INSERT INTO EMPLOYEES VALUES('E01','ABC',20000,'D01');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEES VALUES('E02','BCD',25000,'D01');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEES VALUES('E03','CDE',30000,'D02');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEES VALUES('E04','DEF',35000,'D02');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEES VALUES('E05','EFG',40000,'D03');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEES VALUES('E06','FGH',45000,'D03');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEES VALUES('E07','GHI',50000,'D04');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEES VALUES('E08','HIJ',55000,'D04');
+
+1 row created.
+
+SQL>  INSERT INTO EMPLOYEES VALUES('E09','IJK',60000,'D05');
+
+1 row created.
+
+SQL>  INSERT INTO EMPLOYEES VALUES('E10','JKL',20000,'D05');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEES VALUES('E11','KLM',25000,'D06');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEES VALUES('E12','LMN',30000,'D06');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEES VALUES('E13','MNO',35000,'D07');
+
+1 row created.
+
+SQL>  INSERT INTO EMPLOYEES VALUES('E14','NOP',40000,'D07');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEES VALUES('E15','OPQ',45000,'D08');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEES VALUES('E16','PQR',50000,'D08');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEES VALUES('E17','QRS',55000,'D09');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEES VALUES('E18','RST',60000,'D09');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEES VALUES('E19','STU',20000,'D10');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEES VALUES('E20','TUV',25000,'D10');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEES VALUES('E21','UVW',30000,'D11');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEES VALUES('E22','VWX',35000,'D11');
+
+1 row created.
+
+SQL>  INSERT INTO EMPLOYEES VALUES('E23','WXY',40000,'D12');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEES VALUES('E24','XYZ',45000,'D12');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEES VALUES('E25','YZA',50000,'D13');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEES VALUES('E26','ZAB',55000,'D13');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEES VALUES('E27','AAB',60000,'D14');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEES VALUES('E28','AAC',20000,'D14');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEES VALUES('E29','AAD',25000,'D15');
+
+1 row created.
+
+SQL>  INSERT INTO EMPLOYEES VALUES('E30','AAE',30000,'D15');
+
+1 row created.
+
+SQL> SELECT * FROM EMPLOYEES;
+
+EMP EMP     SALARY D_I                                                          
+--- --- ---------- ---                                                          
+E01 ABC      20000 D01                                                          
+E02 BCD      25000 D01                                                          
+E03 CDE      30000 D02                                                          
+E04 DEF      35000 D02                                                          
+E05 EFG      40000 D03                                                          
+E06 FGH      45000 D03                                                          
+E07 GHI      50000 D04                                                          
+E08 HIJ      55000 D04                                                          
+E09 IJK      60000 D05                                                          
+E10 JKL      20000 D05                                                          
+E11 KLM      25000 D06                                                          
+
+EMP EMP     SALARY D_I                                                          
+--- --- ---------- ---                                                          
+E12 LMN      30000 D06                                                          
+E13 MNO      35000 D07                                                          
+E14 NOP      40000 D07                                                          
+E15 OPQ      45000 D08                                                          
+E16 PQR      50000 D08                                                          
+E17 QRS      55000 D09                                                          
+E18 RST      60000 D09                                                          
+E19 STU      20000 D10                                                          
+E20 TUV      25000 D10                                                          
+E21 UVW      30000 D11                                                          
+E22 VWX      35000 D11                                                          
+
+EMP EMP     SALARY D_I                                                          
+--- --- ---------- ---                                                          
+E23 WXY      40000 D12                                                          
+E24 XYZ      45000 D12                                                          
+E25 YZA      50000 D13                                                          
+E26 ZAB      55000 D13                                                          
+E27 AAB      60000 D14                                                          
+E28 AAC      20000 D14                                                          
+E29 AAD      25000 D15                                                          
+E30 AAE      30000 D15                                                          
+
+30 rows selected.
+
+SQL> SELECT E.* FROM EMPLOYEES E JOIN DEPARTMENT D ON E.D_ID = D.D_ID WHERE E.SALARY = (SELECT MAX(SALARY) FROM EMPLOYEES);
+
+EMP EMP     SALARY D_I
+--- --- ---------- ---
+E09 IJK      60000 D05
+E18 RST      60000 D09
+E27 AAB      60000 D14
+
+SQL> SELECT * FROM EMPLOYEES WHERE SALARY < (SELECT AVG(SALARY) FROM EMPLOYEES);
+
+EMP EMP     SALARY D_I
+--- --- ---------- ---
+E01 ABC      20000 D01
+E02 BCD      25000 D01
+E03 CDE      30000 D02
+E04 DEF      35000 D02
+E10 JKL      20000 D05
+E11 KLM      25000 D06
+E12 LMN      30000 D06
+E13 MNO      35000 D07
+E19 STU      20000 D10
+E20 TUV      25000 D10
+E21 UVW      30000 D11
+
+EMP EMP     SALARY D_I
+--- --- ---------- ---
+E22 VWX      35000 D11
+E28 AAC      20000 D14
+E29 AAD      25000 D15
+E30 AAE      30000 D15
+
+SQL> SELECT E.EMP_ID, E.EMP_NAME FROM EMPLOYEES E JOIN DEPARTMENT D ON E.D_ID = D.D_ID WHERE D.CAMPUS = 15;
+
+EMP EMP
+--- ---
+E01 ABC
+E02 BCD
+E03 CDE
+E04 DEF
+E05 EFG
+E06 FGH
+E07 GHI
+E08 HIJ
+
+SQL> SELECT E.EMP_ID, E.EMP_NAME FROM EMPLOYEES E JOIN DEPARTMENT D ON E.D_ID = D.D_ID WHERE D.CAMPUS NOT IN(5,7,4,12);
+
+EMP EMP
+--- ---
+E01 ABC
+E02 BCD
+E03 CDE
+E04 DEF
+E05 EFG
+E06 FGH	
+E07 GHI
+E08 HIJ
+E15 OPQ
+E16 PQR
+E17 QRS
+
+EMP EMP
+--- ---
+E18 RST
+E25 YZA
+E26 ZAB
+
+SQL> SELECT DISTINCT D.* FROM DEPARTMENT D JOIN EMPLOYEES E ON D.D_ID = E.D_ID WHERE E.SALARY> 40000;
+
+D_I D_NAME           CAMPUS
+--- ------------ ----------
+D08 CIVIL                 3
+D12 ADMIN                 4
+D13 ADMISSION             1
+D14 MEDICAL               5
+D09 EEE                   3
+D04 CSSE                 15
+D05 ARCH                  7
+D03 CSCE                 15
+
+8 rows selected.
+
+SQL> SELECT d.* FROM DEPARTMENT d LEFT JOIN EMPLOYEES e ON d.d_id = e.d_id AND e.salary > 30000 WHERE e.emp_id IS NULL;
+
+D_I D_NAME           CAMPUS
+--- ------------ ----------
+D06 ETC                  12
+D15 MGMT                  5
+D01 CSE                  15
+D10 HR                    4
+
+SELECT * FROM EMPLOYEES e WHERE SALARY > (SELECT MIN(SALARY) FROM EMPLOYEES e1 GROUP BY D_ID HAVING e1.D_ID=e.D_ID);
+
+EMP EMP     SALARY D_I
+--- --- ---------- ---
+E02 BCD      25000 D01
+E04 DEF      35000 D02
+E06 FGH      45000 D03
+E08 HIJ      55000 D04
+E09 IJK      60000 D05
+E12 LMN      30000 D06
+E14 NOP      40000 D07
+E16 PQR      50000 D08
+E18 RST      60000 D09
+E20 TUV      25000 D10
+E22 VWX      35000 D11
+
+EMP EMP     SALARY D_I
+--- --- ---------- ---
+E24 XYZ      45000 D12
+E26 ZAB      55000 D13
+E27 AAB      60000 D14
+E30 AAE      30000 D15
+
+15 rows selected.
+
+SQL> SELECT * FROM EMPLOYEES e WHERE SALARY > (SELECT MAX(SALARY) FROM EMPLOYEES e1 GROUP BY D_ID HAVING e1.D_ID=e.D_ID);
+
+no rows selected
+
+SQL> SELECT AVG(SALARY) FROM (SELECT AVG(SALARY) AS SALARY,D_ID FROM EMPLOYEES GROUP BY D_ID);
+
+AVG(SALARY)
+-----------
+      38500
+
+SQL> SELECT e.EMP_ID, e.EMP_NAME, e.SALARY, AVG(e2.SALARY) AS avg_SALARY, e.SALARY - AVG(e2.SALARY) AS SALARY_DIFF FROM EMPLOYEES e JOIN EMPLOYEES e2 ON e.D_ID = e2.D_ID GROUP BY e.EMP_ID,e.EMP_NAME, e.SALARY;
+
+EMP EMP     SALARY AVG_SALARY SALARY_DIFF
+--- --- ---------- ---------- -----------
+E06 FGH      45000      42500        2500
+E14 NOP      40000      37500        2500
+E27 AAB      60000      40000       20000
+E30 AAE      30000      27500        2500
+E07 GHI      50000      52500       -2500
+E11 KLM      25000      27500       -2500
+E03 CDE      30000      32500       -2500
+E10 JKL      20000      40000      -20000
+E13 MNO      35000      37500       -2500
+E16 PQR      50000      47500        2500
+E18 RST      60000      57500        2500
+
+EMP EMP     SALARY AVG_SALARY SALARY_DIFF
+--- --- ---------- ---------- -----------
+E19 STU      20000      22500       -2500
+E02 BCD      25000      22500        2500
+E01 ABC      20000      22500       -2500
+E15 OPQ      45000      47500       -2500
+E05 EFG      40000      42500       -2500
+E08 HIJ      55000      52500        2500
+E22 VWX      35000      32500        2500
+E23 WXY      40000      42500       -2500
+E09 IJK      60000      40000       20000
+E21 UVW      30000      32500       -2500
+E28 AAC      20000      40000      -20000
+
+EMP EMP     SALARY AVG_SALARY SALARY_DIFF
+--- --- ---------- ---------- -----------
+E29 AAD      25000      27500       -2500
+E17 QRS      55000      57500       -2500
+E24 XYZ      45000      42500        2500
+E04 DEF      35000      32500        2500
+E12 LMN      30000      27500        2500
+E20 TUV      25000      22500        2500
+E26 ZAB      55000      52500        2500
+E25 YZA      50000      52500       -2500
+
+SQL> INSERT INTO  EMPLOYEES (EMP_ID, EMP_NAME, D_ID) VALUES ('E31','NEW','D01');
+
+1 row created.
+
+SQL> UPDATE EMPLOYEES SET SALARY=( SELECT AVG(AVG_SALARY) FROM (SELECT AVG(SALARY) AS AVG_SALARY FROM EMPLOYEES GROUP BY D_ID)) WHERE EMP_ID='E31';
+
+1 row updated.
+
+SQL> DELETE FROM EMPLOYEES WHERE SALARY> (SELECT AVG(SALARY) FROM EMPLOYEES);
+
+15 rows deleted.
+
+SQL> SELECT emp_id, emp_name FROM (SELECT emp_id, emp_name FROM EMPLOYEES ORDER BY emp_id DESC) WHERE ROWNUM <= 5;
+
+EMP EMP
+--- ---
+E31 NEW
+E30 AAE
+E29 AAD
+E28 AAC
+E22 VWX
+
+SQL> SPOOL OFF ;
+

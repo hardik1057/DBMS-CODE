@@ -1,0 +1,229 @@
+SQL> DESC FACULTY
+ERROR:
+ORA-04043: object FACULTY does not exist 
+
+
+SQL> CREATE TABLE FACULTY (FAC_ID VARCHAR2(3) UNIQUE NOT NULL, FAC_NAME VARCHAR2(25) NOT NULL, FAC_TYPE VARCHAR2(15) NOT NULL CHECK (FAC_TYPE IN ('REGULAR', 'ADHOC')), RESEARCH_AREA VARCHAR2(20) NOT NULL DEFAULT 'COMPUTER SCIENCE', JOIN_YR NUMBER(4) NOT NULL, NO_OF_PUB NUMBER(2), SALARY NUMBER(7));
+CREATE TABLE FACULTY (FAC_ID VARCHAR2(3) UNIQUE NOT NULL, FAC_NAME VARCHAR2(25) NOT NULL, FAC_TYPE VARCHAR2(15) NOT NULL CHECK (FAC_TYPE IN ('REGULAR', 'ADHOC')), RESEARCH_AREA VARCHAR2(20) NOT NULL DEFAULT 'COMPUTER SCIENCE', JOIN_YR NUMBER(4) NOT NULL, NO_OF_PUB NUMBER(2), SALARY NUMBER(7))
+                                                                                                                                                                                                       *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> CREATE TABLE FACULTY (FAC_ID VARCHAR2(3) UNIQUE NOT NULL, FAC_NAME VARCHAR2(25) NOT NULL, FAC_TYPE VARCHAR2(15) NOT NULL CHECK (FAC_TYPE IN ('REGULAR', 'ADHOC')), RESEARCH_AREA VARCHAR2(20) NOT NULL DEFAULT 'COMPUTER SCIENCE', JOIN_YR NUMBER(4) NOT NULL, NO_OF_PUB NUMBER(2), SALARY NUMBER(7)));
+CREATE TABLE FACULTY (FAC_ID VARCHAR2(3) UNIQUE NOT NULL, FAC_NAME VARCHAR2(25) NOT NULL, FAC_TYPE VARCHAR2(15) NOT NULL CHECK (FAC_TYPE IN ('REGULAR', 'ADHOC')), RESEARCH_AREA VARCHAR2(20) NOT NULL DEFAULT 'COMPUTER SCIENCE', JOIN_YR NUMBER(4) NOT NULL, NO_OF_PUB NUMBER(2), SALARY NUMBER(7)))
+                                                                                                                                                                                                       *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> CREATE TABLE FACULTY (FAC_ID VARCHAR2(3) UNIQUE NOT NULL, FAC_NAME VARCHAR2(25) NOT NULL, FAC_TYPE VARCHAR2(15) NOT NULL CHECK (FAC_TYPE IN ('REGULAR', 'ADHOC')), RESEARCH_AREA VARCHAR2(20) NOT NULL DEFAULT 'COMPUTER SCIENCE', JOIN_YR NUMBER(4) NOT NULL, NO_OF_PUB NUMBER(2), SALARY NUMBER(7));
+CREATE TABLE FACULTY (FAC_ID VARCHAR2(3) UNIQUE NOT NULL, FAC_NAME VARCHAR2(25) NOT NULL, FAC_TYPE VARCHAR2(15) NOT NULL CHECK (FAC_TYPE IN ('REGULAR', 'ADHOC')), RESEARCH_AREA VARCHAR2(20) NOT NULL DEFAULT 'COMPUTER SCIENCE', JOIN_YR NUMBER(4) NOT NULL, NO_OF_PUB NUMBER(2), SALARY NUMBER(7))
+                                                                                                                                                                                                       *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> CREATE TABLE FACULTY (FAC_ID VARCHAR2(3) UNIQUE NOT NULL, FAC_NAME VARCHAR2(25) NOT NULL, FAC_TYPE VARCHAR2(15) NOT NULL CHECK (FAC_TYPE IN ('REGULAR', 'ADHOC')), RESEARCH_AREA VARCHAR2(20) NOT NULL DEFAULT 'COMPUTER SCIENCE', JOIN_YR NUMBER(4) NOT NULL, NO_OF_PUB NUMBER(2), SALARY NUMBER(7));
+CREATE TABLE FACULTY (FAC_ID VARCHAR2(3) UNIQUE NOT NULL, FAC_NAME VARCHAR2(25) NOT NULL, FAC_TYPE VARCHAR2(15) NOT NULL CHECK (FAC_TYPE IN ('REGULAR', 'ADHOC')), RESEARCH_AREA VARCHAR2(20) NOT NULL DEFAULT 'COMPUTER SCIENCE', JOIN_YR NUMBER(4) NOT NULL, NO_OF_PUB NUMBER(2), SALARY NUMBER(7))
+                                                                                                                                                                                                       *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> CREATE TABLE FACULTY (FAC_ID VARCHAR2(3) UNIQUE NOT NULL, FAC_NAME VARCHAR2(25) NO NULL, FAC_TYPE VARCHAR2(15) NOT NULL CHECK (FAC_TYPE IN ('REGULAR','ADHOC')), RESEARCH_AREA VARCAHR2(20) NOT NULL DEFAULT 'COMPUTER SCIENCE', JOIN_YR NUMBER(4) NOT NULL, NO_OF_PUB NUMBER(2), SALARY NUMBER(7) );
+CREATE TABLE FACULTY (FAC_ID VARCHAR2(3) UNIQUE NOT NULL, FAC_NAME VARCHAR2(25) NO NULL, FAC_TYPE VARCHAR2(15) NOT NULL CHECK (FAC_TYPE IN ('REGULAR','ADHOC')), RESEARCH_AREA VARCAHR2(20) NOT NULL DEFAULT 'COMPUTER SCIENCE', JOIN_YR NUMBER(4) NOT NULL, NO_OF_PUB NUMBER(2), SALARY NUMBER(7) )
+                                                                                *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> CREATE TABLE FACULTY (FAC_ID VARCHAR2(3) UNIQUE NOT NULL, FAC_NAME VARCHAR2(25) NO NULL, FAC_TYPE VARCHAR2(15) NOT NULL CHECK (FAC_TYPE IN ('REGULAR','ADHOC')), RESEARCH_AREA VARCAHR2(20) DEFAULT 'COMPUTER SCIENCE', JOIN_YR NUMBER(4) NOT NULL, NO_OF_PUB NUMBER(2), SALARY NUMBER(7) );
+CREATE TABLE FACULTY (FAC_ID VARCHAR2(3) UNIQUE NOT NULL, FAC_NAME VARCHAR2(25) NO NULL, FAC_TYPE VARCHAR2(15) NOT NULL CHECK (FAC_TYPE IN ('REGULAR','ADHOC')), RESEARCH_AREA VARCAHR2(20) DEFAULT 'COMPUTER SCIENCE', JOIN_YR NUMBER(4) NOT NULL, NO_OF_PUB NUMBER(2), SALARY NUMBER(7) )
+                                                                                *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> CREATE TABLE FACULTY (FAC_ID VARCHAR2(3) UNIQUE NOT NULL, FAC_NAME VARCHAR2(25) NOT NULL, FAC_TYPE VARCHAR2(15) NOT NULL CHECK (FAC_TYPE IN ('REGULAR','ADHOC')), RESEARCH_AREA VARCHAR2(20) DEFAULT 'COMPUTER SCIENCE', JOIN_YR NUMBER(4) NOT NULL, NO_OF_PUB NUMBER(2), SALARY NUMBER(7));
+
+Table created.
+
+SQL> INSERT INTO FACULTY VALUES ('F01', 'Rakesh Sharma', 'Regular', 'Software Testing', 2018, 4, 30000);
+INSERT INTO FACULTY VALUES ('F01', 'Rakesh Sharma', 'Regular', 'Software Testing', 2018, 4, 30000)
+*
+ERROR at line 1:
+ORA-02290: check constraint (HARDIK_2904.SYS_C007332) violated 
+
+
+SQL> INSERT INTO FACULTY VALUES ('F01', 'RAKESH SHARMA', 'REGULAR', 'SOFTWARE TESTING ', 2018, 4, 30000);
+
+1 row created.
+
+SQL> INSERT INTO FACULTY VALUES ('F02', 'PRIYA MEHTA', 'REGULAR', 'DATA MINING ', 2018, 3, 25000);
+
+1 row created.
+
+SQL> INSERT INTO FACULTY VALUES ('F03', 'RAJNISH THAKUR', 'ADHOC', 'CYBER SECURITY', 2015, 4, 15000);
+
+1 row created.
+
+SQL> INSERT INTO FACULTY VALUES ('F04', 'AJAY VERMA', 'ADHOC', 'DATA MINING ', 2017, 3, 17000);
+
+1 row created.
+
+SQL> INSERT INTO FACULTY VALUES ('F05', 'SHEPHALI SINGH', 'REGULAR', 'IMAGE PROCESSING', 2016, 5, 40000);
+
+1 row created.
+
+SQL> INSERT INTO FACULTY VALUES ('F06', 'SHIV SHANKAR', 'REGULAR', 'SOFTWARE TESING', 2017, 3, 35000);
+
+1 row created.
+
+SQL> INSERT INTO FACULTY VALUES ('F07', 'PRATYASHA PANDA', 'ADHOC', 'AI', 2014, 6, 55000);
+
+1 row created.
+
+SQL> INSERT INTO FACULTY VALUES ('F08', 'SANJAY MISHRA', 'REGULAR', 'AI', 2015, 5, 40000);
+
+1 row created.
+
+SQL> INSERT INTO FACULTY VALUES ('F09', 'PUNYASLOK NAYAK', 'REGULAR', 'BIG DATA', 2013, 6, 45000);
+
+1 row created.
+
+SQL> INSERT INTO FACULTY VALUES ('F10', 'SEENU SINGH', 'ADHOC', 'BIG DATA', 2015, 5, 35000);
+
+1 row created.
+
+SQL> SELECT FAC_ID, FAC_NAME, RESEARCH_AREA, JOIN_YR FROM FACULTY WHERE JOIN_YR=2015 OR NO_OF_PUB>4;
+
+FAC FAC_NAME                  RESEARCH_AREA           JOIN_YR                   
+--- ------------------------- -------------------- ----------                   
+F03 RAJNISH THAKUR            CYBER SECURITY             2015                   
+F05 SHEPHALI SINGH            IMAGE PROCESSING           2016                   
+F07 PRATYASHA PANDA           AI                         2014                   
+F08 SANJAY MISHRA             AI                         2015                   
+F09 PUNYASLOK NAYAK           BIG DATA                   2013                   
+F10 SEENU SINGH               BIG DATA                   2015                   
+
+6 rows selected.
+
+SQL> SELECT * FROM FACULTY WHERE FAC_TYPE='ADHOC' AND RESEARCH_AREA IN ('AI', 'BIG DATA') ORDER BY SALARY DESC;
+
+FAC FAC_NAME                  FAC_TYPE        RESEARCH_AREA           JOIN_YR   
+--- ------------------------- --------------- -------------------- ----------   
+ NO_OF_PUB     SALARY                                                           
+---------- ----------                                                           
+F07 PRATYASHA PANDA           ADHOC           AI                         2014   
+         6      55000                                                           
+                                                                                
+F10 SEENU SINGH               ADHOC           BIG DATA                   2015   
+         5      35000                                                           
+                                                                                
+
+SQL> SELECT SUM (NO_OF_PUB) FROM FACULTY WHERE JOIN_YR>2015;
+
+SUM(NO_OF_PUB)                                                                  
+--------------                                                                  
+            18                                                                  
+
+SQL> SELECT * FROM FACULTY WHERE FAC_TYPE ='ADHOC' AND SALARY=(SELECT MAX(SALARY) FROM FACULTY WHERE FAC_TYPE=='ADHOC');
+SELECT * FROM FACULTY WHERE FAC_TYPE ='ADHOC' AND SALARY=(SELECT MAX(SALARY) FROM FACULTY WHERE FAC_TYPE=='ADHOC')
+                                                                                                         *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> SELECT * FROM FACULTY WHERE FAC_TYPE ='ADHOC' AND SALARY=(SELECT MAX(SALARY) FROM FACULTY WHERE FAC_TYPE='ADHOC');
+
+FAC FAC_NAME                  FAC_TYPE        RESEARCH_AREA           JOIN_YR   
+--- ------------------------- --------------- -------------------- ----------   
+ NO_OF_PUB     SALARY                                                           
+---------- ----------                                                           
+F07 PRATYASHA PANDA           ADHOC           AI                         2014   
+         6      55000                                                           
+                                                                                
+
+SQL> SELECT * FROM FACULTY WHERE FAC_TYPE ='REGULAR' AND NO_OF_PUB=(SELECT MIN(NO_OF_PUB) FROM FACULTY WHERE FAC_TYPE='REGULAR');
+
+FAC FAC_NAME                  FAC_TYPE        RESEARCH_AREA           JOIN_YR   
+--- ------------------------- --------------- -------------------- ----------   
+ NO_OF_PUB     SALARY                                                           
+---------- ----------                                                           
+F02 PRIYA MEHTA               REGULAR         DATA MINING                2018   
+         3      25000                                                           
+                                                                                
+F06 SHIV SHANKAR              REGULAR         SOFTWARE TESING            2017   
+         3      35000                                                           
+                                                                                
+
+SQL> SELECT FAC_TYPE , AVG(SALARY) FROM FACULTY GROUP BY FAC_TYPE HAVING AVG(SALARY)<32000;
+
+FAC_TYPE        AVG(SALARY)                                                     
+--------------- -----------                                                     
+ADHOC                 30500                                                     
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SELECT FAC_ID, FAC_NAME, RESEARCH_AREA, JOIN_YR FROM FACULTY WHERE JOIN_YR=2015 OR NO_OF_PUB>4;
+
+FAC FAC_NAME                  RESEARCH_AREA           JOIN_YR                   
+--- ------------------------- -------------------- ----------                   
+F03 RAJNISH THAKUR            CYBER SECURITY             2015                   
+F05 SHEPHALI SINGH            IMAGE PROCESSING           2016                   
+F07 PRATYASHA PANDA           AI                         2014                   
+F08 SANJAY MISHRA             AI                         2015                   
+F09 PUNYASLOK NAYAK           BIG DATA                   2013                   
+F10 SEENU SINGH               BIG DATA                   2015                   
+
+6 rows selected.
+
+SQL> SET LINESIZE 200;
+SQL> SET PAGESIZE 200 ;
+SQL> SELECT * FROM FACULTY WHERE FAC_TYPE='ADHOC' AND RESEARCH_AREA IN ('AI', 'BIG DATA') ORDER BY SALARY DESC;
+
+FAC FAC_NAME                  FAC_TYPE        RESEARCH_AREA           JOIN_YR  NO_OF_PUB     SALARY                                                                                                     
+--- ------------------------- --------------- -------------------- ---------- ---------- ----------                                                                                                     
+F07 PRATYASHA PANDA           ADHOC           AI                         2014          6      55000                                                                                                     
+F10 SEENU SINGH               ADHOC           BIG DATA                   2015          5      35000                                                                                                     
+
+SQL> SELECT SUM (NO_OF_PUB) FROM FACULTY WHERE JOIN_YR>2015;
+
+SUM(NO_OF_PUB)                                                                                                                                                                                          
+--------------                                                                                                                                                                                          
+            18                                                                                                                                                                                          
+
+SQL> SELECT * FROM FACULTY WHERE FAC_TYPE ='ADHOC' AND SALARY=(SELECT MAX(SALARY) FROM FACULTY WHERE FAC_TYPE=='ADHOC');
+SELECT * FROM FACULTY WHERE FAC_TYPE ='ADHOC' AND SALARY=(SELECT MAX(SALARY) FROM FACULTY WHERE FAC_TYPE=='ADHOC')
+                                                                                                         *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> SELECT * FROM FACULTY WHERE FAC_TYPE ='ADHOC' AND SALARY=(SELECT MAX(SALARY) FROM FACULTY WHERE FAC_TYPE='ADHOC');
+
+FAC FAC_NAME                  FAC_TYPE        RESEARCH_AREA           JOIN_YR  NO_OF_PUB     SALARY                                                                                                     
+--- ------------------------- --------------- -------------------- ---------- ---------- ----------                                                                                                     
+F07 PRATYASHA PANDA           ADHOC           AI                         2014          6      55000                                                                                                     
+
+SQL> SELECT * FROM FACULTY WHERE FAC_TYPE ='REGULAR' AND NO_OF_PUB=(SELECT MIN(NO_OF_PUB) FROM FACULTY WHERE FAC_TYPE='REGULAR');
+
+FAC FAC_NAME                  FAC_TYPE        RESEARCH_AREA           JOIN_YR  NO_OF_PUB     SALARY                                                                                                     
+--- ------------------------- --------------- -------------------- ---------- ---------- ----------                                                                                                     
+F02 PRIYA MEHTA               REGULAR         DATA MINING                2018          3      25000                                                                                                     
+F06 SHIV SHANKAR              REGULAR         SOFTWARE TESING            2017          3      35000                                                                                                     
+
+SQL> SELECT FAC_TYPE , AVG(SALARY) FROM FACULTY GROUP BY FAC_TYPE HAVING AVG(SALARY)<32000;
+
+FAC_TYPE        AVG(SALARY)                                                                                                                                                                             
+--------------- -----------                                                                                                                                                                             
+ADHOC                 30500                                                                                                                                                                             
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SPOOL OFF ;

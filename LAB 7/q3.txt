@@ -1,0 +1,167 @@
+SQL> CREATE TABLE STUDENT_TABLE(SID NUMBER(4), SNAME VARCHAR2(5), SEM NUMBER(1), DEPT VARCHAR2(5));
+
+Table created.
+
+SQL> INSERT INTO STUDENT_TABLE VALUES(100,'ABC',1,'IT');
+
+1 row created.
+
+SQL> INSERT INTO STUDENT_TABLE VALUES(101,'XYZ',2,'CSE');
+
+1 row created.
+
+SQL> INSERT INTO STUDENT_TABLE VALUES(102,'PQR',3,'MECH');
+
+1 row created.
+
+SQL> INSERT INTO STUDENT_TABLE VALUES(103,'MNS',4,'ELEC');
+
+1 row created.
+
+SQL> INSERT INTO STUDENT_TABLE VALUES(104,'EFG',5,'EEE');
+
+1 row created.
+
+SQL> CREATE TABLE COURSE_TABLE(CID NUMBER(4), CNAME VARCHAR2(5), INC VARCHAR2(5));
+
+Table created.
+
+SQL> INSERT INTO COURSE_TABLE VALUES(1,'IT','ABC');
+
+1 row created.
+
+SQL> INSERT INTO COURSE_TABLE VALUES(2,'CSE','XYZ');
+
+1 row created.
+
+SQL> INSERT INTO COURSE_TABLE VALUES(3,'MECH','MNS');
+
+1 row created.
+
+SQL> INSERT INTO COURSE_TABLE VALUES(4,'EEE','PQR');
+
+1 row created.
+
+SQL> INSERT INTO COURSE_TABLE VALUES(5,'ELEC','DEF');
+
+1 row created.
+
+SQL> CREATE TABLE ENROLL_TABLE(SID NUMBER(4), SNAME VARCHAR2(5),CID NUMBER(5),CNAME VARCHAR2(5));
+
+Table created.
+
+SQL> INSERT INTO ENROLL_TABLE VALUES(100,'ABC',NULL,NULL);
+
+1 row created.
+
+SQL> INSERT INTO ENROLL_TABLE VALUES(101,'XYZ',NULL,NULL);
+
+1 row created.
+
+SQL> INSERT INTO ENROLL_TABLE VALUES(103,'PQR',NULL,NULL);
+
+1 row created.
+
+SQL> INSERT INTO ENROLL_TABLE VALUES(102,'MNS',5,'ELEC');
+
+1 row created.
+
+SQL> INSERT INTO ENROLL_TABLE VALUES(104,'EFG',4,'EEE');
+
+1 row created.
+
+SQL> select * FROM STUDENT_TABLE;
+
+       SID SNAME        SEM DEPT
+---------- ----- ---------- -----
+       100 ABC            1 IT
+       101 XYZ            2 CSE
+       102 PQR            3 MECH
+       103 MNS            4 ELEC
+       104 EFG            5 EEE
+
+SQL> select * FROM COURSE_TABLE;
+
+       CID CNAME INC
+---------- ----- -----
+         1 IT    ABC
+         2 CSE   XYZ
+         3 MECH  MNS
+         4 EEE   PQR
+         5 ELEC  DEF
+
+SQL> select * FROM ENROLL_TABLE;
+
+       SID SNAME        CID CNAME
+---------- ----- ---------- -----
+       100 ABC
+       101 XYZ
+       103 PQR
+       102 MNS            5 ELEC
+       104 EFG            4 EEE
+
+
+
+SQL> INSERT INTO ENROLL_TABLE VALUES(NULL,NULL,2,'CSE');
+
+1 row created.
+
+SQL> INSERT INTO ENROLL_TABLE VALUES(NULL,NULL,1,'IT');
+
+1 row created.
+
+SQL> select * FROM ENROLL_TABLE;
+
+       SID SNAME        CID CNAME
+---------- ----- ---------- -----
+       100 ABC
+       101 XYZ
+       103 PQR
+       102 MNS            5 ELEC
+       104 EFG            4 EEE
+                          2 CSE
+                          1 IT
+
+7 rows selected.
+
+SQL> SELECT * FROM STUDENT_TABLE LEFT OUTER JOIN ENROLL_TABLE ON STUDENT_TABLE.SID = ENROLL_TABLE.SID;
+
+       SID SNAME        SEM DEPT         SID SNAME        CID CNAME
+---------- ----- ---------- ----- ---------- ----- ---------- -----
+       100 ABC            1 IT           100 ABC
+       101 XYZ            2 CSE          101 XYZ
+       103 MNS            4 ELEC         103 PQR
+       102 PQR            3 MECH         102 MNS            5 ELEC
+       104 EFG            5 EEE          104 EFG            4 EEE
+
+SQL> SELECT * FROM STUDENT_TABLE RIGHT OUTER JOIN ENROLL_TABLE ON STUDENT_TABLE.SID = ENROLL_TABLE.SID;
+
+       SID SNAME        SEM DEPT         SID SNAME        CID CNAME
+---------- ----- ---------- ----- ---------- ----- ---------- -----
+       100 ABC            1 IT           100 ABC
+       101 XYZ            2 CSE          101 XYZ
+       102 PQR            3 MECH         102 MNS            5 ELEC
+       103 MNS            4 ELEC         103 PQR
+       104 EFG            5 EEE          104 EFG            4 EEE
+                                                            1 IT
+                                                            2 CSE
+
+7 rows selected.
+
+SQL> SELECT * FROM STUDENT_TABLE FULL OUTER JOIN ENROLL_TABLE ON STUDENT_TABLE.SID = ENROLL_TABLE.SID;
+
+       SID SNAME        SEM DEPT         SID SNAME        CID CNAME
+---------- ----- ---------- ----- ---------- ----- ---------- -----
+       100 ABC            1 IT           100 ABC
+       101 XYZ            2 CSE          101 XYZ
+       103 MNS            4 ELEC         103 PQR
+       102 PQR            3 MECH         102 MNS            5 ELEC
+       104 EFG            5 EEE          104 EFG            4 EEE
+                                                            2 CSE
+                                                            1 IT
+
+7 rows selected.
+
+SQL> SPOOL OFF;
+
+

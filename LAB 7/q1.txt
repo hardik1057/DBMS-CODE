@@ -1,0 +1,265 @@
+SQL> CREATE TABLE EMPLOYEE_7(EMP_ID VARCHAR2(3), EMP_NAME VARCHAR2(2), AGE NUMBER(2), GENDER VARCHAR2(1), DEPT VARCHAR(5));
+
+Table created.
+
+SQL> INSERT INTO EMPLOYEE_7 VALUES('E01', 'A', 20, 'M','CSE');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE_7 VALUES('E02', 'B', 25, 'F','CSE');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE_7 VALUES('E03', 'C', 30, 'F','IT');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE_7 VALUES('E04', 'D', 50, 'M','IT');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE_7 VALUES('E05', 'E', 40, 'F','MGM');
+
+1 row created.                                                                                                                                                                             
+
+SQL> CREATE TABLE PROJECT_7 (PID VARCHAR2(3), P_NAME VARCHAR2(15), INC VARCHAR2(3));
+
+Table created.
+
+SQL> INSERT INTO PROJECT_7 VALUES ('P01','DATABASE', 'E01');
+
+1 row created.
+
+SQL> INSERT INTO PROJECT_7 VALUES ('P02','NETWORKING', 'E02');
+
+1 row created.
+
+SQL> INSERT INTO PROJECT_7 VALUES ('P03','NETWORKING', 'E03');
+
+1 row created.
+
+SQL> INSERT INTO PROJECT_7 VALUES ('P04','DATABASE', 'E04');
+
+1 row created.
+
+SQL> INSERT INTO PROJECT_7 VALUES ('P05','ML', 'E05');
+
+1 row created.
+
+SQL> CREATE TABLE ASSIGNED_TO_7 (EID VARCHAR2(3), P_I VARCHAR2(3));
+
+Table created.
+
+SQL> INSERT INTO ASSIGNED_TO_7 VALUES ('E01','P01');
+
+1 row created.
+
+SQL> INSERT INTO ASSIGNED_TO_7 VALUES ('E02','P01');
+
+1 row created.
+
+SQL> INSERT INTO ASSIGNED_TO_7 VALUES ('E03','P01');
+
+1 row created.
+
+SQL> INSERT INTO ASSIGNED_TO_7 VALUES ('E03','P02');
+
+1 row created.
+
+SQL> INSERT INTO ASSIGNED_TO_7 VALUES ('E04','P02');
+
+1 row created.
+
+SQL> INSERT INTO ASSIGNED_TO_7 VALUES ('E05','P02');
+
+1 row created.
+
+SQL> INSERT INTO ASSIGNED_TO_7 VALUES ('E01','P02');
+
+1 row created.
+
+SQL> INSERT INTO ASSIGNED_TO_7 VALUES ('E01','P03');
+
+1 row created.
+
+SQL> INSERT INTO ASSIGNED_TO_7 VALUES ('E03','P03');
+
+1 row created.
+
+SQL> INSERT INTO ASSIGNED_TO_7 VALUES ('E05','P03');
+
+1 row created.
+
+SQL> INSERT INTO ASSIGNED_TO_7 VALUES ('E02','P04');
+
+1 row created.
+
+SQL> INSERT INTO ASSIGNED_TO_7 VALUES ('E05','P04');
+
+1 row created.
+
+SQL> INSERT INTO ASSIGNED_TO_7 VALUES ('E02','P05');
+
+1 row created.
+
+SQL> INSERT INTO ASSIGNED_TO_7 VALUES ('E04','P05');
+
+1 row created.
+
+SQL> INSERT INTO ASSIGNED_TO_7 VALUES ('E01','P04');
+
+1 row created.
+
+SQL> INSERT INTO ASSIGNED_TO_7 VALUES ('E03','P05');
+
+1 row created.
+
+SQL> CREATE TABLE DEPENDENT_7 (DEP_ID VARCHAR2(3), DEP_NAME VARCHAR2(1), AGE NUMBER(2), D_GEN VARCHAR2(1), RELATION VARCHAR2(10), EID VARCHAR2(3));
+
+Table created.
+
+SQL> INSERT INTO DEPENDENT_7 VALUES ('D05', 'G', 40, 'M', 'FATHER', 'E01');
+
+1 row created.
+
+SQL> INSERT INTO DEPENDENT_7 VALUES ('D06', 'H', 12, 'M', 'BROTHER', 'E02');
+
+1 row created.
+
+SQL> INSERT INTO DEPENDENT_7 VALUES ('D08', 'J', 50, 'F', 'MOTHER', 'E04');
+
+1 row created.
+
+SQL> INSERT INTO DEPENDENT_7 VALUES ('D07', 'I', 10, 'F', 'SISTER', 'E03');
+
+1 row created.
+
+SQL> INSERT INTO DEPENDENT_7 VALUES ('D09', 'K', 10, 'M', 'SON', 'E05');
+
+1 row created.
+
+SQL> SELECT * FROM DEPENDENT_7;
+
+DEP D        AGE D RELATION   EID                                                                                                                                                                       
+--- - ---------- - ---------- ---                                                                                                                                                                       
+D05 G         40 M FATHER     E01                                                                                                                                                                       
+D06 H         12 M BROTHER    E02                                                                                                                                                                       
+D08 J         50 F MOTHER     E04                                                                                                                                                                       
+D07 I         10 F SISTER     E03                                                                                                                                                                       
+D09 K         10 M SON        E05                                                                                                                                                                       
+
+SQL> SELECT * FROM PROJECT_7;
+
+PID P_NAME          INC
+--- --------------- ---
+P01 DATABASE        E01
+P02 NETWORKING      E02
+P03 NETWORKING      E03
+P04 DATABASE        E04
+P05 ML              E05
+
+SQL> SELECT * FROM ASSIGNED_TO_7;
+
+EID P_I                                                                                                                                                                                                 
+--- ---                                                                                                                                                                                                 
+E01 P01                                                                                                                                                                                                 
+E02 P01                                                                                                                                                                                                 
+E03 P01                                                                                                                                                                                                 
+E03 P02                                                                                                                                                                                                 
+E04 P02                                                                                                                                                                                                 
+E05 P02                                                                                                                                                                                                 
+E01 P02                                                                                                                                                                                                 
+E01 P03                                                                                                                                                                                                 
+E03 P03                                                                                                                                                                                                 
+E05 P03                                                                                                                                                                                                 
+E02 P04                                                                                                                                                                                                 
+E05 P04                                                                                                                                                                                                 
+E02 P05                                                                                                                                                                                                 
+E04 P05                                                                                                                                                                                                 
+E01 P04                                                                                                                                                                                                 
+E03 P05 
+
+SQL> SELECT * FROM EMPLOYEE_7;
+
+EMP EM        AGE G DEPT                                                                                                                                                                                
+--- -- ---------- - -----                                                                                                                                                                               
+E01 A          20 M CSE                                                                                                                                                                                 
+E02 B          25 F CSE                                                                                                                                                                                 
+E03 C          30 F IT                                                                                                                                                                                  
+E04 D          50 M IT                                                                                                                                                                                  
+E05 E          40 F MGM   
+
+SQL> SELECT DEPENDENT_7.* FROM EMPLOYEE_7 INNER JOIN DEPENDENT_7 ON EMPLOYEE_7.EMP_ID = DEPENDENT_7.EID WHERE EMPLOYEE_7.GENDER = 'F';
+
+DEP D        AGE D RELATION   EID
+--- - ---------- - ---------- ---
+D06 H         12 M BROTHER    E02
+D07 I         10 F SISTER     E03
+D09 K         10 M SON        E05
+
+SQL> SELECT DEPENDENT_7.* FROM EMPLOYEE_7 INNER JOIN DEPENDENT_7 ON EMPLOYEE_7.EMP_ID = DEPENDENT_7.EID WHERE EMPLOYEE_7.DEPT = 'CSE';
+
+DEP D        AGE D RELATION   EID
+--- - ---------- - ---------- ---
+D05 G         40 M FATHER     E01
+D06 H         12 M BROTHER    E02
+
+SQL> SELECT EID FROM ASSIGNED_TO_7 WHERE P_I ='P01';
+
+EID
+---
+E01
+E02
+E03
+
+SQL> SELECT EMPLOYEE_7.* FROM EMPLOYEE_7 INNER JOIN ASSIGNED_TO_7 ON EMPLOYEE_7.Emp_ID = ASSIGNED_TO_7.EID WHERE ASSIGNED_TO_7.P_I = 'P02';
+
+EMP EM        AGE G DEPT
+--- -- ---------- - -----
+E01 A          20 M CSE
+E03 C          30 F IT
+E04 D          50 M IT
+E05 E          40 F MGM
+
+SQL> SELECT * FROM EMPLOYEE_7 WHERE EMP_ID IN ( SELECT EID FROM ASSIGNED_TO_7 WHERE P_I = 'P02') AND EMP_ID IN (SELECT EID FROM ASSIGNED_TO_7 WHERE P_I = 'P04');
+
+EMP EM        AGE G DEPT
+--- -- ---------- - -----
+E05 E          40 F MGM
+E01 A          20 M CSE
+
+SQL> SELECT * FROM EMPLOYEE_7 WHERE EMP_ID IN ( SELECT EID FROM ASSIGNED_TO_7 WHERE P_I IN (SELECT PID FROM PROJECT_7 WHERE P_NAME = 'DATABASE' OR P_NAME='NETWORKING'));
+
+EMP EM        AGE G DEPT
+--- -- ---------- - -----
+E01 A          20 M CSE
+E02 B          25 F CSE
+E03 C          30 F IT
+E04 D          50 M IT
+E05 E          40 F MGM
+
+
+SQL> SELECT E.EMP_ID, E.EMP_NAME, E.AGE, E.GENDER, E.DEPT FROM EMPLOYEE_7 E, PROJECT_7 P, ASSIGNED_TO_7 A WHERE A.EID = E.EMP_ID AND A.P_I = P.PID MINUS SELECT E.EMP_ID, E.EMP_NAME, E.AGE, E.GENDER, E.DEPT FROM EMPLOYEE_7 E, PROJECT_7 P, ASSIGNED_TO_7 A WHERE P.PID='P05' AND A.EID = E.EMP_ID AND A.P_I = P.PID;
+
+EMP EM        AGE G DEPT
+--- -- ---------- - -----
+E01 A          20 M CSE
+E05 E          40 F MGM
+
+
+SQL> SELECT * FROM EMPLOYEE_7 WHERE EMP_ID IN (SELECT EID FROM ASSIGNED_TO_7 GROUP BY EID HAVING COUNT(DISTINCT P_I) = (SELECT COUNT(*) FROM PROJECT_7));
+
+no rows selected
+
+SQL> SELECT * FROM EMPLOYEE_7 WHERE EMP_ID IN (SELECT EID FROM ASSIGNED_TO_7 WHERE P_I='P05');
+
+EMP EM        AGE G DEPT
+--- -- ---------- - -----
+E02 B          25 F CSE
+E04 D          50 M IT
+E03 C          30 F IT
+
+SQL> SPOOL OFF;
+
+
+
