@@ -1,0 +1,146 @@
+SQL> CREATE TABLE STUD_SEQ (ROLL NUMBER(2), NAME VARCHAR2(15));
+
+Table created.
+
+SQL> INSERT INTO STUD_SEQ VALUES (01,'AB');
+
+1 row created.
+
+SQL> INSERT INTO STUD_SEQ VALUES (02,'CD');
+
+1 row created.
+
+SQL> INSERT INTO STUD_SEQ VALUES (03,'EF');
+
+1 row created.
+
+SQL> INSERT INTO STUD_SEQ VALUES (04,'GH');
+
+1 row created.
+
+SQL> INSERT INTO STUD_SEQ VALUES (05,'IJ');
+
+1 row created.
+
+SQL> INSERT INTO STUD_SEQ VALUES (06,'KL');
+
+1 row created.
+
+SQL> INSERT INTO STUD_SEQ VALUES (07,'MN');
+
+1 row created.
+
+SQL> INSERT INTO STUD_SEQ VALUES (08,'OP');
+
+1 row created.
+
+SQL> INSERT INTO STUD_SEQ VALUES (09,'RS');
+
+1 row created.
+
+SQL> INSERT INTO STUD_SEQ VALUES (10,'TU');
+
+1 row created.
+
+SQL> SELECT * FROM STUD_REQ;
+SELECT * FROM STUD_REQ
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> SELECT * FROM STUD_SEQ;
+
+      ROLL NAME
+---------- ---------------
+         1 AB
+         2 CD
+         3 EF
+         4 GH
+         5 IJ
+         6 KL
+         7 MN
+         8 OP
+         9 RS
+        10 TU
+
+10 rows selected.
+
+SQL> CREATE SEQUENCE SEQ_1
+  2  START WITH 1
+  3  INCREMENT BY 1
+  4  MAXVALUE 100
+  5  NOCACHE
+  6  NOCYCLE;
+
+Sequence created.
+
+SQL> INSERT INTO STUD_SEQ VALUES(SEQ_1.NEXTVAL, 'AB');
+
+1 row created.
+
+SQL> INSERT INTO STUD_SEQ VALUES(SEQ_1.NEXTVAL, 'CD');
+
+1 row created.
+
+SQL> INSERT INTO STUD_SEQ VALUES(SEQ_1.NEXTVAL, 'EF');
+
+1 row created.
+
+SQL> INSERT INTO STUD_SEQ VALUES(SEQ_1.NEXTVAL, 'GH');
+
+1 row created.
+
+SQL> INSERT INTO STUD_SEQ VALUES(SEQ_1.NEXTVAL, 'IJ');
+
+1 row created.
+
+SQL> INSERT INTO STUD_SEQ VALUES(SEQ_1.NEXTVAL, 'KL');
+
+1 row created.
+
+SQL> INSERT INTO STUD_SEQ VALUES(SEQ_1.NEXTVAL, 'MN');
+
+1 row created.
+
+SQL> INSERT INTO STUD_SEQ VALUES(SEQ_1.NEXTVAL, 'OP');
+
+1 row created.
+
+SQL> INSERT INTO STUD_SEQ VALUES(SEQ_1.NEXTVAL, 'RS');
+
+1 row created.
+
+SQL> INSERT INTO STUD_SEQ VALUES(SEQ_1.NEXTVAL, 'TU');
+
+1 row created.
+
+SQL> SELECT * FROM STUD_SEQ;
+
+      ROLL NAME
+---------- ---------------
+         1 AB
+         2 CD
+         3 EF
+         4 GH
+         5 IJ
+         6 KL
+         7 MN
+         8 OP
+         9 RS
+        10 TU
+         1 AB
+
+      ROLL NAME
+---------- ---------------
+         2 CD
+         3 EF
+         4 GH
+         5 IJ
+         6 KL
+         7 MN
+         8 OP
+         9 RS
+        10 TU
+
+20 rows selected.

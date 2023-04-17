@@ -1,0 +1,216 @@
+SQL> CREATE TABLE PRODUCT(P_ID NUMBER(4), P_NAME VARCHAR2(15), COLOR VARCHAR2(10), MFG_YR NUMBER(6), EXP_YR NUMBER(6), PRICE NUMBER(9,2));
+
+Table created.
+
+SQL> INSERT INTO PRODUCT VALUES(100,'MOBILE','BLACK',2015,2020,8499);
+
+1 row created.
+
+SQL> INSERT INTO PRODUCT VALUES(101, 'EARPHONE', 'WHITE', 2017, 2020, 499.99);
+
+1 row created.
+
+SQL> INSERT INTO PRODUCT VALUES(102, 'SPEAKER', 'RED', 2018, 2022, 899.49);
+
+1 row created.
+
+SQL> INSERT INTO PRODUCT VALUES(103, 'KEYBOARD', 'BLACK', 2013, 2020, 1299.49);
+
+1 row created.
+
+SQL> INSERT INTO PRODUCT VALUES(104, 'MONITOR', 'BLUE', 2017, 2030, 9100.49);
+
+1 row created.
+
+SQL> INSERT INTO PRODUCT VALUES(105, 'HDD', 'BLACK', 2014, 2030, 3500.49);
+
+1 row created.
+
+SQL>  INSERT INTO PRODUCT VALUES(106, 'MOUSE', 'WHITE', 2016, 2022, 500.49);
+
+1 row created.
+
+SQL> INSERT INTO PRODUCT VALUES(107, 'PEN DRIVE', 'GREEN', 2013, 2022, 300.49);
+
+1 row created.
+
+SQL> CREATE VIEW P1 AS SELECT * FROM PRODUCT;
+
+View created.
+
+SQL> SELECT * FROM P1;
+
+      P_ID P_NAME          COLOR          MFG_YR     EXP_YR      PRICE
+---------- --------------- ---------- ---------- ---------- ----------
+       100 MOBILE          BLACK            2015       2020       8499
+       101 EARPHONE        WHITE            2017       2020     499.99
+       102 SPEAKER         RED              2018       2022     899.49
+       103 KEYBOARD        BLACK            2013       2020    1299.49
+       104 MONITOR         BLUE             2017       2030    9100.49
+       105 HDD             BLACK            2014       2030    3500.49
+       106 MOUSE           WHITE            2016       2022     500.49
+       107 PEN DRIVE       GREEN            2013       2022     300.49
+
+8 rows selected.
+
+SQL> CREATE VIEW P2 AS SELECT P_ID,P_NAME,PRICE FROM P1 WHERE MFG_YR=2017;
+
+View created.
+
+SQL> SELECT * FROM P2;
+
+      P_ID P_NAME               PRICE
+---------- --------------- ----------
+       101 EARPHONE            499.99
+       104 MONITOR            9100.49
+
+SQL> INSERT INTO P1 VALUES(108,'printer','white',2017,2032,3000.49);
+
+1 row created.
+
+SQL> SELECT * FROM P1;
+
+      P_ID P_NAME          COLOR          MFG_YR     EXP_YR      PRICE
+---------- --------------- ---------- ---------- ---------- ----------
+       100 MOBILE          BLACK            2015       2020       8499
+       101 EARPHONE        WHITE            2017       2020     499.99
+       102 SPEAKER         RED              2018       2022     899.49
+       103 KEYBOARD        BLACK            2013       2020    1299.49
+       104 MONITOR         BLUE             2017       2030    9100.49
+       105 HDD             BLACK            2014       2030    3500.49
+       106 MOUSE           WHITE            2016       2022     500.49
+       107 PEN DRIVE       GREEN            2013       2022     300.49
+       108 printer         white            2017       2032    3000.49
+
+9 rows selected.
+
+SQL> SELECT * FROM PRODUCT;
+
+      P_ID P_NAME          COLOR          MFG_YR     EXP_YR      PRICE
+---------- --------------- ---------- ---------- ---------- ----------
+       100 MOBILE          BLACK            2015       2020       8499
+       101 EARPHONE        WHITE            2017       2020     499.99
+       102 SPEAKER         RED              2018       2022     899.49
+       103 KEYBOARD        BLACK            2013       2020    1299.49
+       104 MONITOR         BLUE             2017       2030    9100.49
+       105 HDD             BLACK            2014       2030    3500.49
+       106 MOUSE           WHITE            2016       2022     500.49
+       107 PEN DRIVE       GREEN            2013       2022     300.49
+       108 printer         white            2017       2032    3000.49
+
+9 rows selected.
+
+SQL> UPDATE P1 SET PRICE=5000 WHERE P_ID=105;
+
+1 row updated.
+
+SQL> SELECT * FROM PRODUCT;
+
+      P_ID P_NAME          COLOR          MFG_YR     EXP_YR      PRICE
+---------- --------------- ---------- ---------- ---------- ----------
+       100 MOBILE          BLACK            2015       2020       8499
+       101 EARPHONE        WHITE            2017       2020     499.99
+       102 SPEAKER         RED              2018       2022     899.49
+       103 KEYBOARD        BLACK            2013       2020    1299.49
+       104 MONITOR         BLUE             2017       2030    9100.49
+       105 HDD             BLACK            2014       2030       5000
+       106 MOUSE           WHITE            2016       2022     500.49
+       107 PEN DRIVE       GREEN            2013       2022     300.49
+       108 printer         white            2017       2032    3000.49
+
+9 rows selected.
+
+SQL> DELETE P1 where P_NAME='SPEAKER';
+
+1 row deleted.
+
+SQL> SELECT * FROM PRODUCT;
+
+      P_ID P_NAME          COLOR          MFG_YR     EXP_YR      PRICE
+---------- --------------- ---------- ---------- ---------- ----------
+       100 MOBILE          BLACK            2015       2020       8499
+       101 EARPHONE        WHITE            2017       2020     499.99
+       103 KEYBOARD        BLACK            2013       2020    1299.49
+       104 MONITOR         BLUE             2017       2030    9100.49
+       105 HDD             BLACK            2014       2030       5000
+       106 MOUSE           WHITE            2016       2022     500.49
+       107 PEN DRIVE       GREEN            2013       2022     300.49
+       108 printer         white            2017       2032    3000.49
+
+8 rows selected.
+
+SQL> SELECT * FROM P1;
+
+      P_ID P_NAME          COLOR          MFG_YR     EXP_YR      PRICE
+---------- --------------- ---------- ---------- ---------- ----------
+       100 MOBILE          BLACK            2015       2020       8499
+       101 EARPHONE        WHITE            2017       2020     499.99
+       103 KEYBOARD        BLACK            2013       2020    1299.49
+       104 MONITOR         BLUE             2017       2030    9100.49
+       105 HDD             BLACK            2014       2030       5000
+       106 MOUSE           WHITE            2016       2022     500.49
+       107 PEN DRIVE       GREEN            2013       2022     300.49
+       108 printer         white            2017       2032    3000.49
+
+8 rows selected.
+
+SQL> CREATE VIEW P3 AS SELECT * FROM PRODUCT WITH READ ONLY CONSTRAINT READ_ONLY;
+
+View created.
+
+SQL> DELETE P3 where P_ID=101;
+DELETE P3 where P_ID=101
+       *
+ERROR at line 1:
+ORA-42399: cannot perform a DML operation on a read-only view
+
+SQL> DELETE P2;
+
+3 rows deleted.
+
+SQL> SELECT * FROM P2;
+
+no rows selected
+
+SQL> ALTER TABLE PRODUCT ADD BRAND varchar(3);
+
+Table altered.
+
+SQL> UPDATE PRODUCT SET BRAND='HP';
+
+5 rows updated.
+
+SQL> SELECT * FROM PRODUCT;
+
+      P_ID P_NAME          COLOR          MFG_YR     EXP_YR      PRICE BRA
+---------- --------------- ---------- ---------- ---------- ---------- ---
+       100 MOBILE          BLACK            2015       2020       8499 HP
+       103 KEYBOARD        BLACK            2013       2020    1299.49 HP
+       105 HDD             BLACK            2014       2030       5000 HP
+       106 MOUSE           WHITE            2016       2022     500.49 HP
+       107 PEN DRIVE       GREEN            2013       2022     300.49 HP
+
+SQL> CREATE VIEW P4 AS SELECT * FROM PRODUCT;
+
+View created.
+
+SQL> SELECT * FROM P4;
+
+      P_ID P_NAME          COLOR          MFG_YR     EXP_YR      PRICE BRA
+---------- --------------- ---------- ---------- ---------- ---------- ---
+       100 MOBILE          BLACK            2015       2020       8499 HP
+       103 KEYBOARD        BLACK            2013       2020    1299.49 HP
+       105 HDD             BLACK            2014       2030       5000 HP
+       106 MOUSE           WHITE            2016       2022     500.49 HP
+       107 PEN DRIVE       GREEN            2013       2022     300.49 HP
+
+SQL>SQL> CREATE VIEW P5 AS SELECT EXP_YR, AVG(PRICE) AS AVERAGE FROM PRODUCT WHERE PRICE<5000 GROUP BY EXP_YR HAVING AVG(PRICE)>1000;
+
+View created.
+
+SQL> SELECT * FROM P5;
+
+    EXP_YR    AVERAGE
+---------- ----------
+      2020    1299.49
+SQL> SPOOL OFF;
