@@ -1,0 +1,44 @@
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> edit lab_9_q1;
+
+SQL> @lab_9_q1
+Enter value for enter_employee_number: E19
+old   5:   emp_no := '&Enter_Employee_Number';
+new   5:   emp_no := 'E19';
+
+PL/SQL procedure successfully completed.
+
+SQL> SET SERVEROUTPUT ON;
+SQL> @lab_9_q1
+Enter value for enter_employee_number: e12
+old   5:   emp_no := '&Enter_Employee_Number';
+new   5:   emp_no := 'e12';
+Employee e12 does not exist in the Emp_cursor table.                            
+
+PL/SQL procedure successfully completed.
+
+SQL> @lab_9_q1
+Enter value for enter_employee_number: E12
+old   5:   emp_no := '&Enter_Employee_Number';
+new   5:   emp_no := 'E12';
+Salary of employee E12 has been updated by 15%.                                 
+
+PL/SQL procedure successfully completed.
+
+SQL> edit lab_9_q2
+
+SQL> @lab_9_q2
+Number of records updated: 2                                                    
+
+PL/SQL procedure successfully completed.
+
+SQL> edit lab_9_q3
+
+SQL> commit;
+
+Commit complete.
+
+SQL> spool off;
