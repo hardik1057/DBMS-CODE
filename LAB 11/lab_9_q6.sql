@@ -12,6 +12,6 @@ BEGIN
 		EXIT WHEN empcr%NOTFOUND;
 		DBMS_OUTPUT.PUT_LINE(vname||' '||vdesg);
 	END LOOP;
-	CLOSE empcr;
+	CLOSE empcr;
 END;
 /

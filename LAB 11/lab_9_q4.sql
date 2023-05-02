@@ -10,6 +10,6 @@ BEGIN
 			EXIT WHEN CSR%ROWCOUNT = 4 OR CSR%NOTFOUND;
 			DBMS_OUTPUT.PUT_LINE(vname || ' ' || vdept || ' ' || vsal);
 		END LOOP;
-	CLOSE CSR;
+	CLOSE CSR;
 END;
 /

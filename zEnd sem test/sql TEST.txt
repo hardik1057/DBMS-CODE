@@ -1,0 +1,222 @@
+SQL> CREATE TABLE TEACHER_1 (TID VARCHAR2(3), TNAME VARCHAR2(10), AGE NUMBER(3), DEPT VARCHAR2(7));
+
+Table created.
+
+SQL> INSERT INTO TEACHER_1 VALUES ('T01', 'RAHUL', 27, 'CSE');
+
+1 row created.
+
+SQL> INSERT INTO TEACHER_1 VALUES ('T02', 'PRIYA', 25, 'CSE');
+
+1 row created.
+
+SQL> INSERT INTO TEACHER_1 VALUES ('T03', 'RAJ', 28, 'IT');
+
+1 row created.
+
+SQL> INSERT INTO TEACHER_1 VALUES ('T04', 'PREETI', 26, 'IT');
+
+1 row created.
+
+SQL> INSERT INTO TEACHER_1 VALUES ('T05', 'SHUBHAM', 26, 'CSCE');
+
+1 row created.
+
+SQL> INSERT INTO TEACHER_1 VALUES ('T06', 'SANJAY', 28, 'CSCE');
+
+1 row created.
+
+SQL> INSERT INTO TEACHER_1 VALUES ('T07', 'RUPALI', 27, 'CSCE');
+
+1 row created.
+
+SQL> INSERT INTO TEACHER_1 VALUES ('T08', 'SONALI', 25, 'CSCE');
+
+1 row created.
+
+SQL> CREATE TABLE SUBJECT_1 (SID VARCHAR2(3), SNAME VARCHAR2(10), CREDIT NUMBER(1));
+
+Table created.
+
+SQL> INSERT INTO SUBJECT_1 VALUES ('S01', 'DBMS', 4);
+
+1 row created.
+
+SQL> INSERT INTO SUBJECT_1 VALUES ('S02', 'SE', 3);
+
+1 row created.
+
+SQL> INSERT INTO SUBJECT_1 VALUES ('S03', 'C.PROG', 3);
+
+1 row created.
+
+SQL> INSERT INTO SUBJECT_1 VALUES ('S04', 'OS', 3);
+
+1 row created.
+
+SQL> INSERT INTO SUBJECT_1 VALUES ('S05', 'CN', 4);
+
+1 row created.
+
+SQL> INSERT INTO SUBJECT_1 VALUES ('S06', 'DAA', 4);
+
+1 row created.
+
+SQL> INSERT INTO SUBJECT_1 VALUES ('S07', 'FLA', 3);
+
+1 row created.
+
+SQL> INSERT INTO SUBJECT_1 VALUES ('S08', 'CD', 3);
+
+1 row created.
+
+SQL> SELECT * FROM SUBJECT_1;
+
+SID SNAME          CREDIT
+--- ---------- ----------
+S01 DBMS                4
+S02 SE                  3
+S03 C.PROG              3
+S04 OS                  3
+S05 CN                  4
+S06 DAA                 4
+S07 FLA                 3
+S08 CD                  3
+
+8 rows selected.
+
+SQL> SELECT * FROM TEACHER_1;
+
+TID TNAME             AGE DEPT
+--- ---------- ---------- -------
+T01 RAHUL              27 CSE
+T02 PRIYA              25 CSE
+T03 RAJ                28 IT
+T04 PREETI             26 IT
+T05 SHUBHAM            26 CSCE
+T06 SANJAY             28 CSCE
+T07 RUPALI             27 CSCE
+T08 SONALI             25 CSCE
+
+8 rows selected.
+
+SQL> CREATE TABLE TEACHES_1 (TID VARCHAR2(3), SID VARCHAR2(3));
+
+Table created.
+
+SQL> INSERT INTO TEACHES_1 VALUES ('T01','S03');
+
+1 row created.
+
+SQL> INSERT INTO TEACHES_1 VALUES ('T03','S02');
+
+1 row created.
+
+SQL> INSERT INTO TEACHES_1 VALUES ('T05','S04');
+
+1 row created.
+
+SQL> INSERT INTO TEACHES_1 VALUES ('T02','S01');
+
+1 row created.
+
+SQL> INSERT INTO TEACHES_1 VALUES ('T04','S05');
+
+1 row created.
+
+SQL> INSERT INTO TEACHES_1 VALUES ('T06','S06');
+
+1 row created.
+
+SQL> INSERT INTO TEACHES_1 VALUES ('T02','S02');
+
+1 row created.
+
+SQL> INSERT INTO TEACHES_1 VALUES ('T01','S05');
+
+1 row created.
+
+SQL> INSERT INTO TEACHES_1 VALUES ('T03','S03');
+
+1 row created.
+
+SQL> INSERT INTO TEACHES_1 VALUES ('T05','S07');
+
+1 row created.
+
+SQL> INSERT INTO TEACHES_1 VALUES ('T07','S01');
+
+1 row created.
+
+SQL> INSERT INTO TEACHES_1 VALUES ('T06','S08');
+
+1 row created.
+
+SQL> SELECT * FROM TEACHES_1;
+
+TID SID
+--- ---
+T01 S03
+T03 S02
+T05 S04
+T02 S01
+T04 S05
+T06 S06
+T02 S02
+T01 S05
+T03 S03
+T05 S07
+T07 S01
+
+TID SID
+--- ---
+T06 S08
+
+12 rows selected.
+
+SQL> SELECT S.* FROM SUBJECT_1 S,TEACHES_1 T,TEACHER_1 TE WHERE S.SID=T.SID AND T.TID=TE.TID AND TE.TNAME='RAJ';
+
+SID SNAME          CREDIT
+--- ---------- ----------
+S02 SE                  3
+S03 C.PROG              3
+
+SQL> SELECT TE.* FROM SUBJECT_1 S,TEACHES_1 T,TEACHER_1 TE WHERE S.SID=T.SID AND T.TID=TE.TID AND (S.SNAME='OS' OR S.SNAME='DBMS');
+
+TID TNAME             AGE DEPT
+--- ---------- ---------- -------
+T05 SHUBHAM            26 CSCE
+T02 PRIYA              25 CSE
+T07 RUPALI             27 CSCE
+
+SQL> SELECT T.TID,TE.TNAME,T.SID,S.SNAME FROM SUBJECT_1 S,TEACHES_1 T,TEACHER_1 TE WHERE S.SID=T.SID AND T.TID=TE.TID AND S.CREDIT<4;
+
+TID TNAME      SID SNAME
+--- ---------- --- ----------
+T01 RAHUL      S03 C.PROG
+T02 PRIYA      S02 SE
+T03 RAJ        S03 C.PROG
+T03 RAJ        S02 SE
+T05 SHUBHAM    S07 FLA
+T05 SHUBHAM    S04 OS
+T06 SANJAY     S08 CD
+
+7 rows selected.
+
+SQL> SELECT TE.* FROM TEACHER_1 TE WHERE TE.TID NOT IN (SELECT TE.TID FROM SUBJECT_1 S,TEACHES_1 T,TEACHER_1 TE WHERE S.SID=T.SID AND T.TID=TE.TID AND (S.SNAME='SE' OR S.SNAME='DAA'));
+
+TID TNAME             AGE DEPT
+--- ---------- ---------- -------
+T01 RAHUL              27 CSE
+T08 SONALI             25 CSCE
+T07 RUPALI             27 CSCE
+T04 PREETI             26 IT
+T05 SHUBHAM            26 CSCE
+
+SQL> SELECT TE.* FROM TEACHER_1 TE WHERE TE.TID NOT IN (SELECT TID FROM TEACHES_1);
+
+TID TNAME             AGE DEPT
+--- ---------- ---------- -------
+T08 SONALI             25 CSCE
+
+SQL> SPOOL OFF;
